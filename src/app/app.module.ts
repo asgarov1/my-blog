@@ -9,11 +9,16 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
+    NavComponent
   ],
   imports: [
     MaterialModule,
@@ -22,8 +27,8 @@ import {MaterialModule} from "./material/material.module";
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-        { path: 'posts/post/:article', component: PostsComponent },
-    ]) ,
+      {path: 'posts/post/:article', component: PostsComponent},
+    ]),
     MarkdownModule.forRoot({
       loader: HttpClient, // optional, only if you use [src] attribute
       sanitize: SecurityContext.NONE,

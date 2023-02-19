@@ -5,7 +5,11 @@
   "projects": {
     "my-blog": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -25,8 +29,8 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "src/my-theme.scss",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js"
@@ -90,8 +94,8 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "src/my-theme.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           }
