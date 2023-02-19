@@ -1,24 +1,20 @@
 import {NgModule, SecurityContext} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {RouterModule} from "@angular/router";
 import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import { PostsComponent } from './posts/posts.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {PostsComponent} from './posts/posts.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import { NavComponent } from './nav/nav.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
-    NavComponent
   ],
   imports: [
     MaterialModule,
@@ -27,7 +23,7 @@ import { NavComponent } from './nav/nav.component';
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      {path: 'posts/post/:article', component: PostsComponent},
+      {path: '', component: PostsComponent},
     ]),
     MarkdownModule.forRoot({
       loader: HttpClient, // optional, only if you use [src] attribute
@@ -43,9 +39,11 @@ import { NavComponent } from './nav/nav.component';
         },
       },
     }),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
