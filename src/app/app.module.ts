@@ -3,29 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BlogPostViewComponent } from './blog-post-view/blog-post-view.component';
 import {RouterModule} from "@angular/router";
 import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button";
+import {MaterialModule} from "./material/material.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlogPostViewComponent,
     PostsComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
-        { path: '', component: BlogPostViewComponent},
         { path: 'posts/post/:article', component: PostsComponent },
-
-      ]) ,
+    ]) ,
     MarkdownModule.forRoot({
       loader: HttpClient, // optional, only if you use [src] attribute
       sanitize: SecurityContext.NONE,
@@ -40,8 +38,6 @@ import {MatButtonModule} from "@angular/material/button";
         },
       },
     }),
-    BrowserAnimationsModule,
-    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
