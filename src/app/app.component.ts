@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {NgIf} from "@angular/common";
+import {NgbAlertModule, NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'JavaMondays';
+  active = 1;
 }

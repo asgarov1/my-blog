@@ -1,0 +1,10 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="activeTabIndex" class="nav-tabs">
+  <li [ngbNavItem]=HOME.tabIndex>
+    <a ngbNavLink [routerLink]="[HOME.path]">Blog</a>
+  </li>
+  <li [ngbNavItem]=ABOUT_PATH.tabIndex>
+    <a ngbNavLink [routerLink]="[ABOUT_PATH.path]">About / Contact</a>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

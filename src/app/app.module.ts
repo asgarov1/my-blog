@@ -9,12 +9,17 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {PostsComponent} from './posts/posts.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAlertModule, NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgIf} from "@angular/common";
+import { AboutComponent } from './about/about.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
+    AboutComponent,
+    NavComponent,
   ],
   imports: [
     MaterialModule,
@@ -24,6 +29,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '', component: PostsComponent},
+      {path: 'about', component: AboutComponent},
     ]),
     MarkdownModule.forRoot({
       loader: HttpClient, // optional, only if you use [src] attribute
