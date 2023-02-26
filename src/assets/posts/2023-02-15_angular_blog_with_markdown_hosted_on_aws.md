@@ -48,3 +48,34 @@ Feel free to check out my blogs code [here](https://github.com/asgarov1/my-blog)
 ___
 
 ## Deployment to AWS
+
+1. After creating and connecting to AWS EC2 install nginx (commands are for Ubuntu): `sudo apt update && sudo apt install nginx`
+2. Check nginx status `systemctl status nginx` - you should see status "active (running)"
+3. Create directory for you application in static files `sudo mkdir /var/www/html/blog`
+4. Change into your project directory (on ur machine) and build it for prod (the command is from Angular 14) `ng build --configuration production`
+5. Scp contents of dist folder from your computer to ec2 `scp -r -i path/to/your/key.pem ./dist/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/`
+6. Copy blog folder to `/var/www/html/blog` with: `cp -r ./blog /var/www/html/`
+7. Update nginx default configuration: `sudo vim /etc/nginx/sites-enabled/default`
+8. Update root to point at your blog `root /var/www/html/my-blog;`
+9. Reload nginx `sudo systemctl reload nginx`
+
+## Automating Deployment
+
+## Adding Domain and SSL
+to add SSL we first of all need a working domain. 
+1. After you buy a domain name (doesn't matter where), go to Route 53 in AWS Console
+2. Go to hosted zones
+3. Create one for your domain
+4. Add one simple record that points at your ec2's public ip (you can find the IP on EC2 page, by selecting your instance and going to network tab)
+5. Add another one that is alias - to point at a previous record
+6. Create records
+7. Copy the Values from NS type of record and paste them by your domain's DNS Name Servers (it will take may be an hour or so for DNS to propogate)
+
+Now we can use certbot to establish ssl with following commands:
+- sudo snap install core; sudo snap refresh core
+- sudo snap install --classic certbot
+- sudo ln -s /snap/bin/certbot /usr/bin/certbot
+- sudo certbot --nginx (just follow the steps)
+
+
+
