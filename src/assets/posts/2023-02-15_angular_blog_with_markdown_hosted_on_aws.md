@@ -1,54 +1,50 @@
 # Angular Blog with Markdown
+
 ___
 
-This is how you make an awesome Strawberry Cheesecake:
+## FrontEnd
 
-## Ingredients
+In this post I will show you how to create an Angular blog with markdown. For that:
 
-#### For the base:
-* Biscuits
-* Butter
+1. Generate your Angular app `ng new blog-app`
+2. Install ngx-markdown dependency (for detailed steps
+   see [here](https://www.npmjs.com/package/ngx-markdown#installation))
 
-#### For the cheesecake:
-* Some sort of cream
-* Cream Cheese
-* Something else
-* Caramel syrup?
+```
+npm install ngx-markdown marked --save
+npm install @types/marked --save-dev
+```
 
-## Steps
-* Crush the biscuits
-* Mix biscuits into the butter
-* Let it set in the fridge for 10 minutes
-* Mix the cream with the Caramel syrup
-* Put it ontop of the base
-* Put it in the fridge for 10 hours
+3. Add the Markdown module to your imports:
 
-### Resources
+```
+imports: [
+   MarkdownModule.forRoot({
+   loader: HttpClient, // optional, only if you use [src] attribute
+   sanitize: SecurityContext.NONE,
+   markedOptions: {
+   provide: MarkedOptions,
+   useValue: {
+A   pedantic: false,
+   smartLists: true,
+   smartypants: false,
+   },
+   },
+   }),
+...
+]
+```
+4. Create your Markdown blog post for example under `src/assets/posts`
+<img src="assets/images/markdown_post_structure.png" width="40%" height="40%">
 
-List of resources
+5. Populate it with some Markdown text
+6. Create a router link for it
+```
+<a routerLink="/assets/posts/1_some_post.md" style="margin-bottom:24px">My first blog post</a>
+```
+7. That's it for the front side, now lets move to deployment.
+Feel free to check out my blogs code [here](https://github.com/asgarov1/my-blog)
 
-This is how you make an awesome Strawberry Cheesecake:
+___
 
-## Ingredients
-
-#### For the base:
-* Biscuits
-* Butter
-
-#### For the cheesecake:
-* Some sort of cream
-* Cream Cheese
-* Something else
-* Caramel syrup?
-
-## Steps
-* Crush the biscuits
-* Mix biscuits into the butter
-* Let it set in the fridge for 10 minutes
-* Mix the cream with the Caramel syrup
-* Put it ontop of the base
-* Put it in the fridge for 10 hours
-
-### Resources
-
-List of resources
+## Deployment to AWS
