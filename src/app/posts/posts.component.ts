@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Post} from "../domain/post";
-import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-posts',
@@ -11,7 +8,7 @@ import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap";
 export class PostsComponent {
 
   posts = [
-    "2023-02-15_angular_blog_with_aws.md",
+    "2023-02-15_angular_blog_with_markdown_hosted_on_aws.md",
   ];
 
   active = this.posts[0];

@@ -1,6 +1,4 @@
-#### 03 June 2022
-
-# Delicious Caramel Recipe
+# Angular Blog with Markdown
 ___
 
 This is how you make an awesome Strawberry Cheesecake:

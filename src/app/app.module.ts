@@ -8,11 +8,9 @@ import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {PostsComponent} from './posts/posts.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from "./material/material.module";
-import {NgbAlertModule, NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgIf} from "@angular/common";
-import { AboutComponent } from './about/about.component';
-import { NavComponent } from './nav/nav.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AboutComponent} from './about/about.component';
+import {NavComponent} from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +20,6 @@ import { NavComponent } from './nav/nav.component';
     NavComponent,
   ],
   imports: [
-    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
