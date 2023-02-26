@@ -1,28 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Post} from "../domain/post";
+import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent implements OnInit {
-
-  active = "one";
+export class PostsComponent {
 
   posts = [
     "2023-02-15_angular_blog_with_aws.md",
-    "2022-11-02_three.md",
-    "2022-10-18_two.md",
-    "2022-10-01_one.md",
   ];
 
+  active = this.posts[0];
+
   constructor() {
-
-  }
-
-  ngOnInit(): void {
   }
 
   getPath(postPath: string): string {
@@ -32,7 +26,9 @@ export class PostsComponent implements OnInit {
   getPostName(postPath: string) {
     let firstLetterIndex = postPath.indexOf("_") + 1;
     let fileExtensionIndex = postPath.indexOf(".md");
-    return postPath.substring(firstLetterIndex, fileExtensionIndex).replaceAll("_", " ");
+    return postPath
+      .substring(firstLetterIndex, fileExtensionIndex)
+      .replaceAll("_", " ");
   }
 
   getPostDate(postPath: string) {

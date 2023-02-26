@@ -1,9 +1,12 @@
 <div class="d-flex">
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-    <li ngbNavItem="{{getPostName(postPath)}}" *ngFor="let postPath of posts">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active"
+      [destroyOnHide]="false"
+      class="nav-pills"
+      orientation="vertical">
+    <li ngbNavItem="{{postPath}}" *ngFor="let postPath of posts;" [destroyOnHide]="true">
       <a ngbNavLink>{{getPostLinkName(postPath)}}</a>
       <ng-template ngbNavContent>
-        <div style="padding:100px" markdown [src]="getPath(postPath)"></div>
+        <div class="mt-5" markdown [src]="getPath(postPath)"></div>
       </ng-template>
     </li>
   </ul>
