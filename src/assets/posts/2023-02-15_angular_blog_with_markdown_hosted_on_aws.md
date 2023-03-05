@@ -59,14 +59,36 @@ ___
 8. Update root to point at your blog `root /var/www/html/blog;`
 9. Reload nginx `sudo systemctl reload nginx`
 
+---
+
 ## Automating Deployment
 
-- Just add the following line for Cronjob to refresh the blog
-`@hourly sudo cp -rf ~/blog/* /var/www/html/blog/`
-- Now use the following lines to update your blog:
-    - `ng build -c production`
-    - `ssh -i /poth/to/key.pem ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com "rm -rf ./blog/*"`
-    - `scp -r -i /poth/to/key.pem ./dist/blog/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/blog/`
+#### Option 1 - deployment script + cronjob on server for the part that requires sudo rights
+
+The benefit of this option is its simplicity (no pipeline to figure out, no extra credentials needed) 
+and the fact that it won't cost us anything extra in terms of money
+
+- Create a deployment script (for example `deploy.sh`) with following contents in you project folder on you computer
+```
+#!/usr/bin/env bash
+
+ng build -c production;
+ssh -i /poth/to/key.pem ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com "rm -rf ./blog/*";
+scp -r -i /poth/to/key.pem ./dist/blog/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/blog/;
+```
+*Script assumes you have a directory called `blog` in your home folder in EC2*
+- mark `deploy.sh` as executable: `chmod +x deploy.sh`
+- open crontab in EC2: `sudo crontab -e`
+- add the following command at the end of the file: `* * * * * sudo cp -rf ~/blog/* /var/www/html/blog/`
+
+So this runs every minute (* * * * *) and copies with recursive rewrite everything from you home directory `blog` to 
+static files blog that nginx uses. As soon as the files are copied/overwritten the website will serve new data, no restart of
+nginx is needed.
+
+#### Option 2 - AWS CodeBuild
+coming soon...
+
+---
 
 ## Adding Domain and SSL
 to add SSL we first of all need a working domain. 
