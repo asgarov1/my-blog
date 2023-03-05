@@ -56,7 +56,7 @@ ___
 5. Scp contents of dist folder from your computer to ec2 `scp -r -i path/to/your/key.pem ./dist/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/`
 6. Copy blog folder to `/var/www/html/blog` with: `cp -r ./blog /var/www/html/`
 7. Update nginx default configuration: `sudo vim /etc/nginx/sites-enabled/default`
-8. Update root to point at your blog `root /var/www/html/my-blog;`
+8. Update root to point at your blog `root /var/www/html/blog;`
 9. Reload nginx `sudo systemctl reload nginx`
 
 ## Automating Deployment
@@ -66,7 +66,7 @@ ___
 - Now use the following lines to update your blog:
     - `ng build -c production`
     - `ssh -i /poth/to/key.pem ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com "rm -rf ./blog/*"`
-    - `scp -r -i /poth/to/key.pem ./dist/my-blog/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/blog/`
+    - `scp -r -i /poth/to/key.pem ./dist/blog/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/blog/`
 
 ## Adding Domain and SSL
 to add SSL we first of all need a working domain. 
