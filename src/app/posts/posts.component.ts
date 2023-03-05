@@ -1,11 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap/nav/nav";
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit{
 
   posts = [
     "2023-03-01_passing_oracle_java_17_certification.md",
@@ -14,7 +16,16 @@ export class PostsComponent {
 
   active = this.posts[0];
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  }
+
+  ngOnInit() {
+    const postParam = this.activatedRoute.snapshot.queryParamMap.get('post');
+    if (postParam) {
+      this.active = this.posts[+postParam]
+    } else {
+      this.updateUrl({nextId: this.posts[0]} as NgbNavChangeEvent)
+    }
   }
 
   getPath(postPath: string): string {
@@ -36,5 +47,24 @@ export class PostsComponent {
 
   getPostLinkName(postPath: string) {
     return `(${this.getPostDate(postPath)}) ${this.getPostName(postPath)}`
+  }
+
+  /**
+   * This updates the url params without navigating
+   *
+   * The idea is that when a user switches blogposts we want to update url so that the user can copy this url or refresh
+   * page
+   * @param event
+   */
+  updateUrl(event: NgbNavChangeEvent) {
+    const queryParams: Params = { post: this.posts.indexOf(event.nextId) };
+
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.activatedRoute,
+        queryParams: queryParams,
+        queryParamsHandling: 'merge', // remove to replace all query params by provided
+      });
   }
 }

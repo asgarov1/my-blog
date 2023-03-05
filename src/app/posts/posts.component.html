@@ -2,7 +2,9 @@
   <ul ngbNav #nav="ngbNav" [(activeId)]="active"
       [destroyOnHide]="false"
       class="nav-pills"
-      orientation="vertical">
+      orientation="vertical"
+      (navChange)="updateUrl($event)"
+  >
     <li ngbNavItem="{{postPath}}" *ngFor="let postPath of posts;" [destroyOnHide]="true">
       <a ngbNavLink>{{getPostLinkName(postPath)}}</a>
       <ng-template ngbNavContent>
