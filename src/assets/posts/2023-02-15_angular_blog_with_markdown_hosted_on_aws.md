@@ -61,6 +61,10 @@ ___
 
 ## Automating Deployment
 
+1. Go to AWS CodeBuild
+2. Select "Create new Build Project"
+3. Under "Source" choose GitHub, connect to it and select your repository
+
 ## Adding Domain and SSL
 to add SSL we first of all need a working domain. 
 1. After you buy a domain name (doesn't matter where), go to Route 53 in AWS Console
@@ -71,7 +75,9 @@ to add SSL we first of all need a working domain.
 6. Create records
 7. Copy the Values from NS type of record and paste them by your domain's DNS Name Servers (it will take may be an hour or so for DNS to propogate)
 
-Now we can use certbot to establish ssl with following commands:
+[here is a video](https://youtu.be/cfzHfazXalo?t=4m19s) that shows the above-mentioned steps
+
+Now we can use certbot on the EC2 to setup ssl with following commands:
 - sudo snap install core; sudo snap refresh core
 - sudo snap install --classic certbot
 - sudo ln -s /snap/bin/certbot /usr/bin/certbot
