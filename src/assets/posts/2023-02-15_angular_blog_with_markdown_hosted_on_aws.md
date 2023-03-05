@@ -79,11 +79,14 @@ scp -r -i /poth/to/key.pem ./dist/blog/* ubuntu@ec2-3-75-240-39.eu-central-1.com
 *Script assumes you have a directory called `blog` in your home folder in EC2*
 - mark `deploy.sh` as executable: `chmod +x deploy.sh`
 - open crontab in EC2: `sudo crontab -e`
-- add the following command at the end of the file: `* * * * * sudo cp -rf ~/blog/* /var/www/html/blog/`
+- add the following command at the end of the file: `* * * * * cp -rf ~/blog /var/www/html`
 
-So this runs every minute (* * * * *) and copies with recursive rewrite everything from you home directory `blog` to 
-static files blog that nginx uses. As soon as the files are copied/overwritten the website will serve new data, no restart of
-nginx is needed.
+So this runs every minute (* * * * *) and copies everything from you home directory `blog` to 
+static files directory that nginx uses. As soon as the files are copied/overwritten the website will serve new data, no restart of
+nginx is needed. 
+
+*This cronjob is not ideal in a sense that it will not delete old js/css files but keep adding new ones (since old js/css files will have different hash)
+but for the purpose of this tutorial it is adequate. Feel free to write fancier script that checks and deletes/rewrites only when files are new`
 
 #### Option 2 - AWS CodeBuild
 coming soon...
