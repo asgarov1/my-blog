@@ -8,8 +8,8 @@ import {Component} from '@angular/core';
 export class PostsComponent {
 
   posts = [
-    "2023-02-15_angular_blog_with_markdown_hosted_on_aws.md",
     "2023-03-01_passing_oracle_java_17_certification.md",
+    "2023-02-15_angular_blog_with_markdown_hosted_on_aws.md",
   ];
 
   active = this.posts[0];

@@ -61,11 +61,12 @@ ___
 
 ## Automating Deployment
 
-We can automate our EC2 to build our project and refresh the blog daily
-
-1. install npm `sudo aot install npm`
-2. install ng `sudo npm install -g @angular/cli`
-3. 
+- Just add the following line for Cronjob to refresh the blog
+`@hourly sudo cp -rf ~/blog/* /var/www/html/blog/`
+- Now use the following lines to update your blog:
+    - `ng build -c production`
+    - `ssh -i /poth/to/key.pem ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com "rm -rf ./blog/*"`
+    - `scp -r -i /poth/to/key.pem ./dist/my-blog/* ubuntu@ec2-3-75-240-39.eu-central-1.compute.amazonaws.com:/home/ubuntu/blog/`
 
 ## Adding Domain and SSL
 to add SSL we first of all need a working domain. 
