@@ -61,9 +61,11 @@ ___
 
 ## Automating Deployment
 
-1. Go to AWS CodeBuild
-2. Select "Create new Build Project"
-3. Under "Source" choose GitHub, connect to it and select your repository
+We can automate our EC2 to build our project and refresh the blog daily
+
+1. install npm `sudo aot install npm`
+2. install ng `sudo npm install -g @angular/cli`
+3. 
 
 ## Adding Domain and SSL
 to add SSL we first of all need a working domain. 
