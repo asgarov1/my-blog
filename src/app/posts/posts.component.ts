@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     const postParam = this.activatedRoute.snapshot.queryParamMap.get('post');
     if (postParam) {
-      this.active = this.posts[+postParam]
+      this.active = postParam
     } else {
       this.updateUrl({nextId: this.posts[0]} as NgbNavChangeEvent)
     }
@@ -57,11 +57,10 @@ export class PostsComponent implements OnInit {
    * The idea is that when a user switches blogposts we want to update url so that the user can copy this url or refresh
    * page
    *
-   * TODO need to switch from ids to actual post name to avoid problems that urls will change if I ever reorder the array
    * @param event
    */
   updateUrl(event: NgbNavChangeEvent) {
-    const queryParams: Params = {post: this.posts.indexOf(event.nextId)};
+    const queryParams: Params = {post: event.nextId};
 
     this.router.navigate(
       [],
