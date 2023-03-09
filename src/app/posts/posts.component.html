@@ -5,7 +5,8 @@
       orientation="vertical"
       (navChange)="updateUrl($event)"
   >
-    <li ngbNavItem="{{postPath}}" *ngFor="let postPath of posts;" [destroyOnHide]="true">
+    <input type="text" placeholder="filter blog posts" class="mb-3 mt-3" #filterInput (input)="filter(filterInput.value)"/>
+    <li ngbNavItem="{{postPath}}" *ngFor="let postPath of postsCopy;" [destroyOnHide]="true">
       <a ngbNavLink>{{getPostLinkName(postPath)}}</a>
       <ng-template ngbNavContent>
         <div class="mt-5" markdown [src]="getPath(postPath)"></div>
@@ -13,5 +14,6 @@
     </li>
   </ul>
 
-  <div [ngbNavOutlet]="nav" class="ms-4 tab-content" style="max-width: 80%"></div>
+  <div [ngbNavOutlet]="nav" class="ms-4 tab-content" style="max-width: 80%">
+  </div>
 </div>
