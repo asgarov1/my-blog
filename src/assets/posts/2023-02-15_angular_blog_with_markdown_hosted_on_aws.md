@@ -89,6 +89,8 @@ ssh -i /poth/to/key.pem ubuntu@ec2-1-2-3-4.eu-central-1.compute.amazonaws.com "s
   }
 ```
 
+And now you can deploy at will with `npm run deploy` (`./deploy.sh` would have worked just as well but `npm run deploy` seems neater)
+
 #### Option 2 - AWS CodeBuild
 coming soon...
 
