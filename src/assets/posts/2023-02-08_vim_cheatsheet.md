@@ -3,11 +3,8 @@
 ---
 
 ### Common commands
-To Save and quit
-`ZZ`
-
-Reload the last saved version of the file
-`:e!`
+- `ZZ` Save and quit
+- `:e!` Reload the last saved version of the file
 
 ### Navigation
  - `C-f` (that's ctrl + f) to jump forward by a full screen

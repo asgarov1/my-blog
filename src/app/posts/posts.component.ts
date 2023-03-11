@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap/nav/nav";
+import {StringUtil} from "../util/string-util";
 
 @Component({
   selector: 'app-posts',
@@ -69,8 +70,12 @@ export class PostsComponent implements OnInit {
     return postPath.substring(0, firstLetterIndex);
   }
 
-  getPostLinkName(postPath: string) {
-    return `(${this.getPostDate(postPath)}) ${this.getPostName(postPath)}`
+  getPostLinkName(postPath: string): string {
+    return StringUtil.capitalizeFirstLetter(this.getPostName(postPath))
+  }
+
+  getPostToolTip(postPath: string): string {
+    return this.getPostDate(postPath) + ' ' + this.getPostLinkName(postPath)
   }
 
   /**
