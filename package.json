@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "pre-build": "echo 'export default [' > posts.ts; ls src/assets/posts/ | tac | awk '{ print \"\\\"\"$0\"\\\",\"}' >> posts.ts; echo ']' >> posts.ts;",
+    "build": "npm run pre-build && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "./deploy.sh"
