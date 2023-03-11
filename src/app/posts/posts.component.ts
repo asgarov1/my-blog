@@ -14,6 +14,9 @@ export class PostsComponent implements OnInit {
     '2023-03-01_passing_oracle_java_17_certification.md',
     '2023-02-15_angular_blog_with_markdown_hosted_on_aws.md',
     '2023-02-08_vim_cheatsheet.md',
+    '2023-01-06_everything_about_java_modules.md',
+    '2023-01-02_microstream_vs_jpa.md',
+    '2022-12-27_angular_pittfalls_for_java_devs.md',
     '2022-11-19_setting_spring_properties_in_runtime.md',
     '2022-11-05_my_amazon_interview_experience_passed.md',
     '2022-08-25_multistage_docker_builds.md',
@@ -25,10 +28,12 @@ export class PostsComponent implements OnInit {
     '2022_04_15_git_prev_and_next.md',
     '2022-04-07_rest_call_with_vanilla_java_11_and_8.md',
     '2022-04-03_remote_debugging.md',
+    '2022-01-08_installing_oracle_db.md',
     '2021-11-06_deploying_to_azure_web_apps.md',
     '2021-05-02_deploying_spring_boot_to_aws_beanstalk.md',
     '2021-04-24_passing_oracle_java_se_11_developer_1z0-819-J.md',
     '2021-04-11_java_8_map_methods_compute_and_merge.md',
+    '2021-01-25_installing_sdkman_on_windows.md',
     '2020-12-27_docker_101.md',
     '2020-12-26_passing_aws_cloud_practitioner_certification.md',
     '2020-09-29_aws_s3_better_than_dropbox.md',
@@ -38,7 +43,6 @@ export class PostsComponent implements OnInit {
     '2020-07-28_testing_spring_boot.md',
     '2020-07-11_spring_transactions_explained.md',
     '2019-09-18_how_i_passed_ocp_java_8.md',
-
   ];
 
   postsCopy = [...this.posts]
