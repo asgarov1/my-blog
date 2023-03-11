@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "pre-build": "echo 'export default [' > posts.ts; ls src/assets/posts/ | tac | awk '{ print \"\\\"\"$0\"\\\",\"}' >> posts.ts; echo ']' >> posts.ts;",
-    "build": "npm run pre-build && ng build",
+    "build": "npm run pre-build && ng build -c production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "./deploy.sh"
+    "deploy": "npm run build && ./deploy.sh"
   },
   "private": true,
   "dependencies": {
