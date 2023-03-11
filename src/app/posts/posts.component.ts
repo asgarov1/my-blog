@@ -105,4 +105,14 @@ export class PostsComponent implements OnInit {
   filter(filterInput: string) {
     this.postsCopy = [...this.posts].filter(post => post.includes(filterInput) || post === this.active)
   }
+
+  validateAll(word = "apple") {
+    const result = [
+      (input: string) => input.length != 5,
+      (input: string) => input !== "some word",
+      (input: string) => {throw new Error("will get thrown no matter which input!")}
+    ]
+      .find(validator => validator(word)) || false;
+    console.log(result)
+  }
 }
