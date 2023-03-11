@@ -72,4 +72,4 @@ of being on time each time you cover another 10 questions
 I took a certification exam, whenever I reviewed the questions
 I found one that was some silly mistake of mine.
 
-
+<img src="assets/images/oracle_certification_java_17.png" width="50%"/>

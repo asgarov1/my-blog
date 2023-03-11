@@ -81,5 +81,5 @@ I haven’t found anything better for Spring 5 Exam.
 That was it - I wish you good luck with your exam. If you have some questions you are welcome to contact me, 
 will be glad to help and/or post a blog post explaining it :)
 
-<img src="assets/images/pivotal_spring_5_certification.pngpng" width="50%" height="50%">
+<img src="assets/images/pivotal_spring_5_certification.png" width="50%" height="50%">
 
