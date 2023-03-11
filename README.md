@@ -11,3 +11,6 @@ ssh -i /poth/to/key.pem ubuntu@ec2-1-2-3-4.eu-central-1.compute.amazonaws.com "s
 ssh -i /poth/to/key.pem ubuntu@ec2-1-2-3-4.eu-central-1.compute.amazonaws.com "sudo cp -r ./blog/* /var/www/html/blog/";
 ```
 
+### Updating posts in [posts-componenet.ts](src/app/posts/posts.component.ts)
+
+Run `ls src/assets/posts/ | tac` and copy output to update the `originalPosts` variable
