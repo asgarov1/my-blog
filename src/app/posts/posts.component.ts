@@ -47,7 +47,8 @@ export class PostsComponent implements OnInit {
   }
 
   filter(filterInput: string) {
-    this.posts = [...completeListOfPosts].filter(post => post.includes(filterInput));
+    this.posts = [...completeListOfPosts]
+      .filter(post => this.getPostName(post).toLowerCase().includes(filterInput.toLowerCase()));
     this.updateUrl({nextId: this.posts[0]} as NgbNavChangeEvent);
     this.active = this.posts[0];
   }
