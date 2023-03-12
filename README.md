@@ -1,4 +1,4 @@
-# MyBlog
+# J Asgarov Blog
 
 Blog written with Angular that reads files from markdown files and uses no backend. 
 

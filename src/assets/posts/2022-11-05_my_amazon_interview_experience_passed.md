@@ -73,7 +73,7 @@ something new to learn" vs "Delivering on time is my strength") and I would have
 which one out of the 2 options is most fitting for me. And it didn't look like there were 
 any wrong choices, but it seemed like some answers were a bit more in line with [leadership 
 principles](https://www.amazon.jobs/en/principles) than others. In general throughout 
-Amazon interview process, leadership principles are a must-read, since they place a lot 
+Amazon interview process, [leadership principles](https://www.amazon.jobs/en/principles) are a must-read, since they place a lot 
 of value on them.
 
 
@@ -116,18 +116,18 @@ and will be moving to the onsite interview :-)
 It was a bit under half an hour and during the call the interviewer just explained more 
 about the interview process. There were going to be 4 Interviews:
 
-1. Interview on data structures - it is important to consider many approaches, to compare 
+1. **Interview on data structures** - it is important to consider many approaches, to compare 
 cons and pros of all before selecting one (specifying time and space complexity).
-2. Interview on logical and maintainable code (writing clean, production level code that 
+2. **Interview on logical and maintainable code** (writing clean, production level code that 
 is easily extensible and adaptable to new requirements)
-3. Interview on problem-solving - specifically in this interview the solution will be a 
+3. **Interview on problem-solving** - specifically in this interview the solution will be a 
 bit less obvious, it is important to disambiguate the problem, break it down before 
 arriving to a solution. For all interviews, when choosing an algorithm, it is important 
 to speak out loud so that the interviewer can follow your thought process because that 
 is as important as the solution itself.
-4. System design interview - this interview asks intentionally ambiguous questions, 
-looking for the candidate to ask clarifying questions, figure out function and 
-non-function requirements, dependencies within the system and outside, keeping in mind 
+4. **System design interview** - this interview asks intentionally ambiguous questions, 
+looking for the candidate to ask clarifying questions, figure out functional and 
+non-functional requirements, dependencies within the system and outside, keeping in mind 
 scalability.
 
 One of the interviews was going to be with the bar raiser (a person who judges whether 
@@ -264,9 +264,9 @@ story between interviews, just better not to.
 ## General Tips
 Grab couple of snacks/chocolate bars as the interviews take from 08:00 till almost 
 13:00, and you have 10-15 mins break in-between, so it is good idea to have something 
-to keep your sugar levels high from going low.
+to keep your sugar levels from getting low.
 
-Confidence is important - even if you are not sure yet where are you going with the
+Confidence is important - even if you are not sure where are you going with the
 solution, just confidently keep asking questions and think out loud, it makes a 
 difference in how your interviewers are going to perceive you and whether they are going 
 to recommend hiring you.
