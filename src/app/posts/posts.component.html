@@ -5,9 +5,10 @@
       orientation="vertical"
       (navChange)="updateUrl($event)"
   >
-    <input type="text" placeholder="filter by post name" class="mb-3 mt-3" #filterInput (input)="filter(filterInput.value)"/>
+    <ng-container *ngTemplateOutlet="filterInputTemplate"></ng-container>
+
     <li ngbNavItem="{{postPath}}" *ngFor="let postPath of posts;" [destroyOnHide]="true">
-      <a ngbNavLink data-mdb-toggle="tooltip" [title]="this.getPostToolTip(postPath)" >{{getPostLinkName(postPath)}}</a>
+      <a ngbNavLink data-mdb-toggle="tooltip" [title]="this.getPostToolTip(postPath)">{{getPostLinkName(postPath)}}</a>
       <ng-template ngbNavContent>
         <div class="mt-5" markdown [src]="getPath(postPath)"></div>
       </ng-template>
@@ -17,3 +18,21 @@
   <div [ngbNavOutlet]="nav" class="ms-4 tab-content" style="max-width: 80%">
   </div>
 </div>
+
+<ng-template #filterInputTemplate>
+  <div class="input-group mb-3 mt-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="filter by name"
+      aria-label="filter by name"
+      aria-describedby="button-addon2"
+      #filterInput
+      (input)="filter(filterInput.value)"
+    />
+    <button class="btn btn-outline-primary" type="button" id="button-addon2" data-mdb-ripple-color="dark"
+            (click)="filterInput.value = ''; filter(filterInput.value)">
+      Clear
+    </button>
+  </div>
+</ng-template>
