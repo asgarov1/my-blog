@@ -6,8 +6,10 @@ So for this blog actually, I had the issue that I wanted to read the static blog
 (the .md files under src/assets/posts/) dynamically so that I can just add a new blog post
 and not have to worry about remembering to add it to some json/ts file.
 
-The issue was that Angular, being client side framework, doesn't have the ability to read 
-static folders at runtime. Therefore I incorporated the reading of the static blog files 
+The issue was that Angular, being client side framework, can't list available static files (because
+js code is running inside of client's browser and static files are on the server ready to be served by nginx when requested 
+-> so js code need to know in advance path/name of each static file). 
+So I needed the list all files before starting the app and therefore, I incorporated the reading of the static blog files 
 into build:
 
 1. First I added the `pre-build` command that lists and saved all the .md files into `posts.ts`

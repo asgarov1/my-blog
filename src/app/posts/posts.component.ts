@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap/nav/nav";
 import {StringUtil} from "../util/string-util";
-import posts from "../../../posts"
+import completeListOfPosts from "../../../posts"
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -10,11 +10,9 @@ import posts from "../../../posts"
 })
 export class PostsComponent implements OnInit {
 
-  originalPosts = posts;
+  posts = [...completeListOfPosts]
 
-  postsCopy = [...this.originalPosts]
-
-  active = this.originalPosts[0];
+  active = this.posts[0];
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -24,7 +22,7 @@ export class PostsComponent implements OnInit {
     if (postParam) {
       this.active = postParam
     } else {
-      this.updateUrl({nextId: this.originalPosts[0]} as NgbNavChangeEvent)
+      this.updateUrl({nextId: this.posts[0]} as NgbNavChangeEvent)
     }
   }
 
@@ -40,17 +38,18 @@ export class PostsComponent implements OnInit {
       .replaceAll("_", " ");
   }
 
-  getPostDate(postPath: string) {
-    let firstLetterIndex = postPath.indexOf("_");
-    return postPath.substring(0, firstLetterIndex);
-  }
-
   getPostLinkName(postPath: string): string {
     return StringUtil.capitalizeFirstLetter(this.getPostName(postPath))
   }
 
   getPostToolTip(postPath: string): string {
     return this.getPostDate(postPath) + ' ' + this.getPostLinkName(postPath)
+  }
+
+  filter(filterInput: string) {
+    this.posts = [...completeListOfPosts].filter(post => post.includes(filterInput));
+    this.updateUrl({nextId: this.posts[0]} as NgbNavChangeEvent);
+    this.active = this.posts[0];
   }
 
   /**
@@ -73,17 +72,8 @@ export class PostsComponent implements OnInit {
       });
   }
 
-  filter(filterInput: string) {
-    this.postsCopy = [...this.originalPosts].filter(post => post.includes(filterInput) || post === this.active)
-  }
-
-  validateAll(word = "apple") {
-    const result = [
-      (input: string) => input.length != 5,
-      (input: string) => input !== "some word",
-      (input: string) => {throw new Error("will get thrown no matter which input!")}
-    ]
-      .find(validator => validator(word)) || false;
-    console.log(result)
+  private getPostDate(postPath: string): string {
+    let firstLetterIndex = postPath.indexOf("_");
+    return postPath.substring(0, firstLetterIndex);
   }
 }

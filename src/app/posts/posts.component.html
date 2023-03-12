@@ -6,7 +6,7 @@
       (navChange)="updateUrl($event)"
   >
     <input type="text" placeholder="filter by post name" class="mb-3 mt-3" #filterInput (input)="filter(filterInput.value)"/>
-    <li ngbNavItem="{{postPath}}" *ngFor="let postPath of postsCopy;" [destroyOnHide]="true">
+    <li ngbNavItem="{{postPath}}" *ngFor="let postPath of posts;" [destroyOnHide]="true">
       <a ngbNavLink data-mdb-toggle="tooltip" [title]="this.getPostToolTip(postPath)" >{{getPostLinkName(postPath)}}</a>
       <ng-template ngbNavContent>
         <div class="mt-5" markdown [src]="getPath(postPath)"></div>
