@@ -215,7 +215,7 @@ public class UserService {
 }
 ```
 
-I wouldn't necessarily call this clear code though.. better just to make call invocations from outside.
+I wouldn't necessarily call this clear code though. better just to make call invocations from outside.
 
 ### PlatformTransactionManager
 

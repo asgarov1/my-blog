@@ -1,4 +1,5 @@
 export default [
+"relativize_exception.png",
 "2023-03-11_angular_reading_static_files_at_build_time.md",
 "2023-03-01_passing_oracle_java_17_certification.md",
 "2023-02-15_angular_blog_with_markdown_hosted_on_aws.md",
@@ -14,7 +15,7 @@ export default [
 "2022-08-14_deleting_files_from_git_history.md",
 "2022-08-05_jackson_bean_deserializer_modifier.md",
 "2022-07-08_angular_recipes.md",
-"2022_04_15_git_prev_and_next.md",
+"2022-04-15_git_prev_and_next.md",
 "2022-04-07_rest_call_with_vanilla_java_11_and_8.md",
 "2022-04-03_remote_debugging.md",
 "2022-01-08_installing_oracle_db.md",
@@ -30,6 +31,10 @@ export default [
 "2020-08-15_passing_pivotals_spring_certified_professional.md",
 "2020-08-10_running_spring_boot_app_inside_of_docker.md",
 "2020-07-28_testing_spring_boot.md",
+"2020-07-21_common_reasons_for_transaction_not_working.md",
 "2020-07-11_spring_transactions_explained.md",
+"2020-07-06_spring_aop_101.md",
+"2020-07-06_privotal_spring_5_exam_common_questions.md",
+"2020-01-17_deploying_spring_boot_and_angular_to_aws_ec2.md",
 "2019-09-18_how_i_passed_ocp_java_8.md",
 ]
