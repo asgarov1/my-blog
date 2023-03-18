@@ -24,7 +24,7 @@ they told me it is something where they would be willing to work with student to
 
 ## Why university of York?
 
-So among english speaking universities these were pretty much my choices for CS masters programs:
+So among english speaking universities these were pretty much my choices for CS masters programs online:
 
 - University of York ([#162 world ranking](https://www.topuniversities.com/universities/university-york), [#21 UK ranking](https://www.theguardian.com/education/ng-interactive/2022/sep/24/the-guardian-university-guide-2023-the-rankings)) - costs 7800 GBP
 - University of Bath ([#179 world ranking](https://www.topuniversities.com/universities/university-bath), [#8 UK ranking](https://www.theguardian.com/education/ng-interactive/2022/sep/24/the-guardian-university-guide-2023-the-rankings)) - costs something like 13000 GBP
@@ -50,7 +50,7 @@ been foreseen or better planned on my side which made the experience much nicer.
 
 ## Studying at the uni
 
-In normal CS program I had the following modules:
+In my CS program I had the following modules:
 1. Algorithms & Data Structures (prog. language used - Java, assignment + exam, difficulty: medium, hard if you don't know DS at all)
 2. Software Engineering (exam, difficulty: medium)
 3. Big Data Analytics (assignment, difficulty: medium)
@@ -62,6 +62,9 @@ In normal CS program I had the following modules:
 9. Artificial Intelligence & Machine Learning (exam, difficulty: medium)
 10. Research Proposal (assignment, difficulty: easy)
 11. Independent Research Project (this last module was the only one to take double as much time - 16 weeks, assignment, difficulty: medium)
+
+Whether you might get exam or assignment is subject to change,
+as far as I know they want to do more assignments in the future.
 
 So the university says that the program is suitable for part-time learning and requires 20 hours per week in average. 
 This has often been criticised from students, who complained that 20 hours is likely to not be enough and most subjects/people 
