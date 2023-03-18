@@ -17,11 +17,13 @@ Once you are connected we will need to run few installations:
 sudo apt update
 sudo apt install default-jdk -y
 
-once this is done check for installed java version with `java -version`
-<img src="assets/images/ec2/ec2_1.png">
+once this is done check for installed java version with `java -version`  
+
+<img src="assets/images/ec2/ec2_1.png">  
 
 ## Download Spring Boot project on EC2
-Go to your repository, right click on Download Code -> Download Zip and copy the link address
+Go to your repository, right click on Download Code -> Download Zip and copy the link address  
+
 <img src="assets/images/ec2/ec2_2.png">
 
 After that just use the link but change zip for tar.gz because of linux
