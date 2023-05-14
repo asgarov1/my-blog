@@ -61,7 +61,8 @@ In my CS program I had the following modules:
 8. Advanced Programming (prog. language used - Python, assignment, difficulty: medium)
 9. Artificial Intelligence & Machine Learning (exam, difficulty: medium)
 10. Research Proposal (assignment, difficulty: easy)
-11. Independent Research Project (this last module was the only one to take double as much time - 16 weeks, assignment, difficulty: medium)
+11. [Independent Research Project](https://docs.google.com/document/d/1pkLVVdAW-zAuu3WaQDq6xqOllJV98C9zaP66OAceU4k/edit#heading=h.hqjo0ilpd9ev) 
+(this last module was the only one to take double as much time - 16 weeks, assignment, difficulty: medium)
 
 Whether you might get exam or assignment is subject to change,
 as far as I know they want to do more assignments in the future.
@@ -112,6 +113,4 @@ no more time for anything else except studying which should be a priority.
 
 I also recommend taking the program once you are already in the IT because then you will be able to relate and learn more but that of 
 course kind of depends on your situation of course. Also, changing jobs tend to require more time so the best thing 
-if you have an established job / routine
-
-
+if you have an established job / routine.
