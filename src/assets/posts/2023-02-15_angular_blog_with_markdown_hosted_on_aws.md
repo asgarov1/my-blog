@@ -10,14 +10,14 @@ In this post I will show you how to create an Angular blog with markdown. For th
 2. Install ngx-markdown dependency (for detailed steps
    see [here](https://www.npmjs.com/package/ngx-markdown#installation))
 
-```
+```bash
 npm install ngx-markdown marked --save
 npm install @types/marked --save-dev
 ```
 
 3. Add the Markdown module to your imports:
 
-```
+```typescript
 imports: [
    MarkdownModule.forRoot({
    loader: HttpClient, // optional, only if you use [src] attribute
@@ -25,13 +25,13 @@ imports: [
    markedOptions: {
    provide: MarkedOptions,
    useValue: {
-A   pedantic: false,
+   pedantic: false,
    smartLists: true,
    smartypants: false,
    },
    },
    }),
-...
+   ...
 ]
 ```
 4. Create your Markdown blog post for example under `src/assets/posts`
@@ -39,7 +39,7 @@ A   pedantic: false,
 
 5. Populate it with some Markdown text
 6. Create a router link for it
-```
+```html
 <a routerLink="/assets/posts/1_some_post.md" style="margin-bottom:24px">My first blog post</a>
 ```
 7. That's it for the front side, now lets move to deployment.
@@ -69,7 +69,7 @@ The benefit of this option is its simplicity (no pipeline to figure out, no extr
 and the fact that it won't cost us anything extra in terms of money
 
 - Create a deployment script (for example `deploy.sh`) with following contents in you project folder on you computer
-```
+```bash
 #!/usr/bin/env bash
 
 ng build -c production;
@@ -82,7 +82,7 @@ ssh -i /poth/to/key.pem ubuntu@ec2-1-2-3-4.eu-central-1.compute.amazonaws.com "s
 
 - Don't forget to mark `deploy.sh` as executable: `chmod +x deploy.sh`
 - Now add deploy option to you `package.json`:
-```
+```json
 "scripts": {
     ...
     "deploy": "./deploy.sh"

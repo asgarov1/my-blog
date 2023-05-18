@@ -13,7 +13,7 @@ Installed eslint -> If you don't have eslint installed, install it globally:
 - Languages and Frameworks  -> Code Tools -> JavaScript -> Code Quality Tools -> ESlint -> Enable `Automatic ESlint configuration`
 - create `.eslintrc.json` in Project root folder
 - Paste following content to turn on eslint for typescript:
-```
+```json
 {
   "root": true,
   "ignorePatterns": [
@@ -88,7 +88,7 @@ npm install @angular-eslint/eslint-plugin@latest \
 - In the root directory of your project create a directory that starts with `eslint-plugin-`:
 (e.g. `eslint-plugin-my-custom-plugin`)
 - Inside of it create `index.js` file:
-```
+```javascript
 module.exports = {
   rules: {
     'rule1': require('./rules/custom-rule.js').rule1,
@@ -97,7 +97,7 @@ module.exports = {
 ```
 We are going to be creating this rule shortly.
 - and `package.json` file:
-```
+```json
 {
   "name": "eslint-plugin-my-custom-plugin",
   "version": "1.0.0",
@@ -108,7 +108,7 @@ We are going to be creating this rule shortly.
 - inside of `rules` directory create a js file which will contain the logic for your custom rule 
 e.g. `custom-rule.js`
 - in this file you can create as many rule objects as you like, in the following fashion:
-```
+```javascript
 exports.rule1 = {
   meta: {
     type: 'problem',
@@ -154,7 +154,7 @@ exports.rule1 = {
 };
 ```
 -update .eslintrc.json to include custom rules, end result should look like this:
-```
+```json
 {
   "root": true,
   "ignorePatterns": [
@@ -231,7 +231,7 @@ exports.rule1 = {
 - Add custom-rule module as a dependency to your package.json by adding the following 2 
 dependencies (make sure directory name matches how you called your plugin directory, in my example 
 `eslint-plugin-my-custom-plugin`:
-```
+```json
     "eslint-plugin-my-custom-plugin": "file:eslint-plugin-my-custom-plugin",
     "esm": "^3.2.25"
 ```

@@ -26,7 +26,7 @@ package-protected and protected visibility as possible but that is limiting. Thi
 modules help. By simple adding module-info.java and specifying which package should be 
 visible to the outside you can enforce which classes can be called from outside:
 
-```
+```java
 // module-info.java
 module foo.bar.xyz {
     exports foo.bar.service;
@@ -99,7 +99,7 @@ ignore that and just let maven do the heavy lifting. The demo files are availabl
 There is no special logic to packaging, except that you provide module-path 
 for dependencies with `-p`:
 
-```
+```bash
 // Compile first project: 
 javac com.asgarov.greeting/src/main/java/com/asgarov/greeting/*.java com.asgarov.greeting/src/main/java/com/asgarov/greeting/internal/*.java com.asgarov.greeting/src/main/java/module-info.java
 
@@ -141,7 +141,7 @@ the look-up we need uses `com.asgarov.tours.api.Tour`.
 
 Without `uses` you would get `ServiceConfigurationError`:
 
-```
+```java
 Exception in thread "main" java.util.ServiceConfigurationError: com.asgarov.tours.api.Tour: module com.asgarov.demo does not declare `uses`
         at java.base/java.util.ServiceLoader.fail(ServiceLoader.java:589)
         at java.base/java.util.ServiceLoader.checkCaller(ServiceLoader.java:575)

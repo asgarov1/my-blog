@@ -24,8 +24,11 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "clipboard": "^2.0.11",
+    "core-js": "2.5.7",
     "emoji-toolkit": "^7.0.0",
     "ngx-markdown": "^15.1.1",
+    "prismjs": "^1.29.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

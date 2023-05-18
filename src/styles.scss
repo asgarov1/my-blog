@@ -5,3 +5,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.markdown-clipboard-button {
+  @extend .btn;
+  @extend .btn-sm;
+  @extend .btn-outline-success;
+  @extend .me-2;
+}

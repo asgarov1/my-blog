@@ -10,7 +10,7 @@ debugger :-)
 
 So we all know comfortable way of using method reference in Java instead of a lambda which is shorter and also prettier:
 
-```
+```java
   private final List<String> vowels = List.of("a", "e", "i", "o", "u");
 
 	public void someMethod() {
@@ -26,7 +26,7 @@ So we all know comfortable way of using method reference in Java instead of a la
 
 This pretty much works as expected. But you might be surprised to find out that the following will throw an exception in Angular on line 10:
 
-```
+```typescript
   readonly vowels = ["a", "e", "i", "o", "u"];
 
   someMethod(): void {
@@ -52,7 +52,7 @@ becomes undefined when function is called only by name reference.
 
 To make it work all you need is to use arrow function which has the advantage of not binding its own this but rather inheriting the one from outer scope:
 
-```
+```typescript
  readonly vowels = ["a", "e", "i", "o", "u"];
 
   someMethod(): void {
@@ -74,7 +74,7 @@ validating function if the input were to "apple", which is very useful when you 
 to only run as many validations as needed:
 
 
-```
+```java
 public void validateAll(String word) {
         String word = "apple";
 		
@@ -92,7 +92,7 @@ public void validateAll(String word) {
 
 Whereas in JS (Angular) array method get executed on every single member of the array:
 
-```
+```typescript
   validateAll(word = "apple") {
     const result = [
       (input: string) => input.length != 5,
@@ -107,7 +107,7 @@ Whereas in JS (Angular) array method get executed on every single member of the 
 
 To make this work in Angular you would need to evaluate only in find:
 
-```
+```typescript
   validateAll(word = "apple") {
     const result = [
       (input: string) => input.length != 5,

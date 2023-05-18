@@ -57,7 +57,7 @@ each entity used) and used 1080 kB. So in end effect both have very similar disk
 
 SQL used to find out disk usage per table is as follows ([original resource](https://wiki.postgresql.org/wiki/Disk_Usage))
 
-```
+```sql
 WITH RECURSIVE pg_inherit(inhrelid, inhparent) AS
     (select inhrelid, inhparent
     FROM pg_inherits

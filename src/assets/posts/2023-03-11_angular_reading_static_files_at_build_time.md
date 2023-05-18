@@ -14,7 +14,7 @@ into build:
 
 1. First I added the `pre-build` command that lists and saves all the `.md` files into `posts.ts`
 as an exported array
-```
+```json
   "scripts": {
      ...
     "pre-build": "echo 'export default [' > posts.ts; ls src/assets/posts/ | tac | awk '{ print \"\\\"\"$0\"\\\",\"}' >> posts.ts; echo ']' >> posts.ts;",
@@ -22,7 +22,7 @@ as an exported array
   },
 ```
 2. And then in Angular I read from posts.ts:
-```
+```typescript
 import completeListOfPosts from "../../../posts"
 
 @Component({
@@ -38,7 +38,7 @@ export class PostsComponent implements OnInit {
 }
 ```
 3. And lastly I included the `posts.ts` file in tsconfig.app.json:
-```
+```json
   ...
   "files": [
     "src/main.ts",
