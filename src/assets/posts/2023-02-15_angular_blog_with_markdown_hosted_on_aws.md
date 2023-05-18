@@ -109,10 +109,10 @@ to add SSL we first of all need a working domain.
 [here is a video](https://youtu.be/cfzHfazXalo?t=4m19s) that shows the above-mentioned steps
 
 Now we can use certbot on the EC2 to setup ssl with following commands:
-- sudo snap install core; sudo snap refresh core
-- sudo snap install --classic certbot
-- sudo ln -s /snap/bin/certbot /usr/bin/certbot
-- sudo certbot --nginx (just follow the steps)
+- `sudo snap install core; sudo snap refresh core`
+- `sudo snap install --classic certbot`
+- `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
+- `sudo certbot --nginx` (just follow the steps)
 
 
 
