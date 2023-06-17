@@ -7,8 +7,7 @@ I just finished my masters program from university of York and figured review is
 ## So first of all why online masters?
 
 In German-speaking countries (I live in Austria) it is possible to get a pretty good Masters program at the FH 
-(applied sciences' university) and it will cost less than 1600 EUR in total (I think it was 386 EUR per semester)
-(some german unis even have distance learning options as well but those are usually more expensive) 
+(applied sciences' university) and it will cost less than 1600 EUR in total (I think it was 386 EUR per semester - some german unis even have distance learning options as well but those are usually more expensive) 
 So obviously that was the first choice I considered.
 
 Unfortunately Unis in german speaking countries only allow masters in the same field where one got a Bachelor degree from. 
@@ -31,7 +30,7 @@ So among english speaking universities these were pretty much my choices for CS 
 - University of Essex ([#465 world ranking](https://www.topuniversities.com/universities/essex-university), [#42 UK ranking](https://www.theguardian.com/education/ng-interactive/2022/sep/24/the-guardian-university-guide-2023-the-rankings)) - around 11222 GBP
 - American universities available via coursera starting from 25000 USD+
 
-From the given choices I went with York as it had the best world ranking from the UK unis and also was the cheapest.
+From the given choices I went with York as it had the best world ranking from the given UK unis and also was the cheapest.
 
 ---
 
