@@ -2,7 +2,7 @@
 
 ---
 
-## Prerequisites
+### Prerequisites
 
 installed and configured AWS SDK
 ```bash
@@ -12,6 +12,7 @@ unzip awscliv2.zip
 sudo ./aws/install
 aws configure
 ```
+---
 
 ## GET voice over with Amazon Polly
 See also [documentation](https://docs.aws.amazon.com/de_de/polly/latest/dg/managing-lexicons.html)

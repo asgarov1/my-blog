@@ -1,4 +1,6 @@
 export default [
+"2023-07-08_apache_wicket_101.md",
+"2023-07-04_aws_cookbook.md",
 "2023-05-18_whatsapp_bot_with_aws_lambda.md",
 "2023-05-15_es_lint_custom_configuration.md",
 "2023-03-17_online_masters_program_in_york_review.md",
@@ -19,7 +21,6 @@ export default [
 "2022-07-08_angular_recipes.md",
 "2022-04-15_git_prev_and_next.md",
 "2022-04-07_rest_call_with_vanilla_java_11_and_8.md",
-"2022-04-03_remote_debugging.md",
 "2022-01-30_create_chrome_extension_in_5_mins.md",
 "2022-01-08_installing_oracle_db.md",
 "2022-01-04_java_file_as_bash_script.md",
