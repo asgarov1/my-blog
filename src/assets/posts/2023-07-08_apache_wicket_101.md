@@ -39,7 +39,7 @@ the Apache Wicket looks like this (literally no logic except marking tags with i
 
 ---
 
-## Hello World with Wicket
+## Project 1 - Hello World with Wicket
 
 ###### TLDR: check out the project on [GitHub](https://github.com/asgarov1/wicket-demo/tree/helloWorld)
 
@@ -201,3 +201,80 @@ public class HelloWorld extends WebPage {
 <br/>
 
 That is all, you can start the tomcat with the build war from Intellij.
+
+---
+
+## Project 2 - Stateful Counter Page
+
+###### TLDR checkout project [on GitHub](https://github.com/asgarov1/wicket-demo/tree/linkCounter)
+
+First we need to define our Application and WebPage classes, just like in the last example:
+
+- `LinkCounterApplication` class
+```java
+public class LinkCounterApplication extends WebApplication {
+    @Override
+    public Class<? extends Page> getHomePage() {
+        return MyCounter.class;
+    }
+}
+```
+
+- `MyCounter` class
+```java
+public class MyCounter extends WebPage {
+
+  int counter = 0;
+
+  public MyCounter() {
+    add(new Link<Void>("counter-link") {
+      @Override
+      public void onClick() {
+        counter++;
+      }
+    });
+    add(new Label("counter-label", () -> counter));
+  }
+} 
+```
+
+- The corresponding `MyCounter.html` page
+```html
+<html xmlns:wicket="http://www.w3.org/1999/xhtml">
+<body>
+<a href="/counter" wicket:id="counter-link">Click</a>
+<br/>
+Was clicked <span wicket:id="counter-label"></span> times
+</body>
+</html> 
+```
+
+- And last but not least the `web.xml`
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>WicketDemo</display-name>
+
+    <filter>
+        <filter-name>wicket.demo.counter</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>com.asgarov.wicket.demo.counter.LinkCounterApplication</param-value>
+        </init-param>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>wicket.demo.counter</filter-name>
+        <url-pattern>/counter/*</url-pattern>
+    </filter-mapping>
+</web-app>
+```
+
+Now that you open the page, you will that clicking the link increments the counter. All of the behavior is defined in
+`MyCounter` class, where `onClick` method defines the behavior of the link click and `counter` variable is passed to the Model
+as a `IModel` implementation, with the following lambda `() -> counter` 
