@@ -55,7 +55,7 @@ our `pom.xml` will look fairly minimalistic:
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.example</groupId>
+  <groupId>com.asgarov</groupId>
   <artifactId>wicket-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -161,15 +161,18 @@ public class HelloWorldApplication extends WebApplication {
 
 - `HelloWorld`
 ```java
-package com.asgarov.wicket.demo;
-
-import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
-
 public class HelloWorld extends WebPage {
-    public HelloWorld() {
-        add(new Label("hello", "Hello World from J"));
-    }
+  public HelloWorld() {
+    add(new Label("hello", String.format("Hello World from J | %s | %s", getCurrentDate(), getCurrentTime())));
+  }
+
+  private static String getCurrentDate() {
+    return LocalDate.now().format(new DateTimeFormatterBuilder().appendPattern("MM/dd").toFormatter());
+  }
+
+  private static String getCurrentTime() {
+    return LocalTime.now().format(new DateTimeFormatterBuilder().appendPattern("HH:mm:ss").toFormatter());
+  }
 }
 ```
 
@@ -177,7 +180,7 @@ public class HelloWorld extends WebPage {
 ```html
 <html xmlns:wicket="http://www.w3.org/1999/xhtml">
   <body>
-    <span wicket:id="hello"></span>
+    <span wicket:id="hello">this text will get replaced</span>
   </body>
 </html>
 ```
