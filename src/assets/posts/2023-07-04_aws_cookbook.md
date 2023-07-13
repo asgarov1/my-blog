@@ -57,6 +57,41 @@ with open("helloaws.mp3","wb") as file:
 - Upload it (to your default region) with: `aws polly put-lexicon --name awsLexicon --content file://YOUR_FILE.xml`
 ---
 
+## EC2
+
+### get metadata of the EC2 instance from within the instance
+- `curl http://169.254.169.254/latest/meta-data/`
+returns a list of metadata links like:
+```
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hostname
+identity-credentials/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+managed-ssh-keys/
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+```
+
+e.g. get public ip of the instance `curl http://169.254.169.254/latest/meta-data/public-ipv4`
+
 ## Helpful commands:
 - GET current region: `aws configure get region`
 

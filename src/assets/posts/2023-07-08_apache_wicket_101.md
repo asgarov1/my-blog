@@ -275,6 +275,35 @@ Was clicked <span wicket:id="counter-label"></span> times
 </web-app>
 ```
 
-Now that you open the page, you will that clicking the link increments the counter. All of the behavior is defined in
+Now that you open the page, you will that clicking the link increments the counter. All the behavior is defined in
 `MyCounter` class, where `onClick` method defines the behavior of the link click and `counter` variable is passed to the Model
 as a `IModel` implementation, with the following lambda `() -> counter` 
+
+## Project 2 - Stateful Counter Page with Ajax
+
+###### TLDR checkout project [on GitHub](https://github.com/asgarov1/wicket-demo/tree/ajaxLinkCounter)
+
+The previous approach would reload the page to get the page with updated counter value. We can use AjaxLink with wicket to let Wicket
+update only the necessary component.
+
+We only need to make changes to the Java class, `MyCounter`:
+
+```java
+public class MyCounter extends WebPage {
+    int counter = 0;
+
+    public MyCounter() {
+        Label label = new Label("counter-label", () -> counter);
+        label.setOutputMarkupId(true);
+        add(label);
+
+        add(new AjaxFallbackLink<>("counter-link") {
+            @Override
+            public void onClick(Optional<AjaxRequestTarget> target) {
+                counter++;
+                target.ifPresent(t -> t.add(label));
+            }
+        });
+    }
+}
+```
