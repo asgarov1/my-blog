@@ -1,4 +1,5 @@
 export default [
+"2023-10-07_gitlab_server_hooks.md",
 "2023-07-08_apache_wicket_101.md",
 "2023-07-04_aws_cookbook.md",
 "2023-05-18_whatsapp_bot_with_aws_lambda.md",
