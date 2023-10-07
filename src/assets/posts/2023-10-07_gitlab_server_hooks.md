@@ -5,7 +5,7 @@
 ### Intro
 
 We had an issue at work where we wanted to prohibit developers to commit without referencing a Jira Ticket in
-the commit message. The problem with the general solutions (pre-commit hook locally, a custom IDE plugin that doesn't allow it) is that these are not enforceable - each developer would have to set it up locally themselves.
+the commit message. The problem with the general solutions (pre-commit hook locally, a custom IDE plugin that doesn't allow it) is that these are not enforceable - each developer would have to set it up locally themselves, and you have to trust them not to bypass it (e.g. `git commit --no-verify` bypasses the `pre-commit` hook).
 
 Enter [Server Side Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) which allow to reject a push based on whatever kind of logic. In this article I will show how to set it up in GitLab (available for all tiers).
 
@@ -90,6 +90,8 @@ while read -r oldrev newrev refname; do
 	done
 done
 ```
+*I based this script on the example that I found [here](https://github.com/github/platform-samples/blob/master/pre-receive-hooks/require-jira-issue.sh)*
+
 5. Save (`:wq`) and set the file as executable (`chmod +x pre-receive.d/pre-receive`)
 
 Now if you try to commit a commit message without ticket number and push it, it will get rejected:
