@@ -72,11 +72,9 @@ location /api/ {
 
 see [here](https://stackoverflow.com/questions/5474666/how-to-run-a-class-from-jar-which-is-not-the-main-class-in-its-manifest-file) for more info
 
-## Cronjob
-### To save logs from cronjob
-`* * * * * /install/deploy/deploy.py >> /install/deploy/deploy.log 2>&1`
-
+---
 ## Ubuntu
+
 ### List linux kernels
 `dpkg --list | grep linux-image`
 
@@ -94,3 +92,33 @@ see [here](https://stackoverflow.com/questions/5474666/how-to-run-a-class-from-j
 After getting the driver name with [List nvidia drivers](#List-nvidia-drivers) you can install the specific driver with:
 
 `sudo apt-get install [nvidia-driver-name]`
+
+---
+## Installing tools:
+
+###  Intellij Idea
+
+- Open Console and change the directory `cd /opt/`
+- Extract the file `sudo tar -xvzf ~/Downloads/jetbrains-toolbox-1.xx.xxxx.tar.gz`
+- Rename the folder (not mandatory, but it's easier for later use) 
+`sudo mv jetbrains-toolbox-1.xx.xxxx jetbrains`
+- Open JetBrains Toolbox `jetbrains/jetbrains-toolbox`
+
+*If you can't open the file you need to install libfuse2:* `sudo apt install libfuse2`
+
+### Nodejs and Npm
+
+Using NVM (update the version in script as applicable)
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+source ~/.bashrc
+nvm list-remote
+nvm install v18.18.2
+node -v && npm -v
+```
+
+---
+## Cronjob
+### To save logs from cronjob
+`* * * * * /install/deploy/deploy.py >> /install/deploy/deploy.log 2>&1`
+
