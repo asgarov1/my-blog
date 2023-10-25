@@ -101,7 +101,7 @@ Now if you try to commit a commit message without ticket number and push it, it 
 
 Once you fix the commit it works:
 
-<img src="assets/images/gitlab/central_conf_1.png" width="50%" height="50%">
+<img src="assets/images/gitlab/central_conf_2.png" width="50%" height="50%">
 
 ---
 ## Option 2: Project Specific Configuration
