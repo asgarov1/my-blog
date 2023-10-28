@@ -114,5 +114,10 @@ Now we can use certbot on the EC2 to setup ssl with following commands:
 - `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
 - `sudo certbot --nginx` (just follow the steps)
 
+If you later on want to add mode domains or subdomains you can do it easily with:
+`certbot --expand -d mysite.com,imap.mysite.com`
+
+So for me it was: `certbot --expand -d asgarvo1.com,blog.asgarov1.com`
+
 
 
