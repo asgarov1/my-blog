@@ -12,3 +12,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   @extend .btn-outline-success;
   @extend .me-2;
 }
+
+th {
+  background-color: lightgray;
+}
+
+td, th {
+  border-color: gray;
+  border-style: dotted;
+  border-width: 1px;
+  padding: 0.6rem;
+}
