@@ -61,7 +61,8 @@ didn't even notice this encoding but this fixed the issue of the firewall.
 Now when we checked the payload (the source view) we see in browser:
 `{"value":"some text with quote: \"this is my quote\u002E\u002E\""}`
 
-<br/>
+And as you can see, the backend received the payload correctly as well:
+
 <br/>
 <img src="assets/images/payload_received_in_backend.png">  
 
