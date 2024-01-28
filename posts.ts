@@ -1,4 +1,5 @@
 export default [
+"2024-01-28_bypassing_path_traversal_check_with_custom_json_serialization_on_frontend.md",
 "2024-01-24_java_generate_qr_code_with_payment_info.md",
 "2023-10-19_linux_cheatsheet.md",
 "2023-10-07_gitlab_server_hooks.md",
