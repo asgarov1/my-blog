@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start-no-build": "ng serve",
     "start": "npm run update-posts-list && ng serve",
     "update-posts-list": "echo 'export default [' > posts.ts; ls src/assets/posts/ | tac | awk '{ print \"\\\"\"$0\"\\\",\"}' >> posts.ts; echo ']' >> posts.ts;",
     "build": "npm run update-posts-list && ng build -c production",
