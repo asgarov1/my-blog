@@ -1,6 +1,5 @@
 # Windows US International Keyboard Without Dead Keys
 
-## Background
 So dead keys are a stupid waste of time for programmers like me, therefore I always try to select 
 a keyboard layout without them. Unfortunately, Windows doesn't come with one preinstalled, therefore I had
 to search for a workaround. All credits to the [original author](https://webcodr.io/2023/05/us-international-keyboard-layout-without-dead-keys/), 
@@ -8,7 +7,7 @@ but whenever I see something this useful, I write my own blog post to eliminate 
 - me not being able to find the blog again in couple of years when I need it again
 - the original blog getting taken down (most blogs close after some years)
 
-So here are the instructions:
+## Instructions
 
 1. Download the [Microsoft Keyboard Layout Creator](https://www.microsoft.com/en-us/download/details.aspx?id=102134) 
 from Microsoft’s website
