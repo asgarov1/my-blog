@@ -56,6 +56,7 @@ Now we can easily sent a request from the frontend:
       return this.httpClient.get('http://localhost:8080/api/v1/resource');
   }
 ```
+
 ---
 
 ## CSRF Background Info
@@ -82,8 +83,9 @@ for `http://www.banking.com`, resulting in the POST request taking place.
 
 ### Solution and Explanation
 
-In order to fix these, Spring Security by default enables CSRF, where every "not CSRF allowed" http method
-(in Spring Security 6 it is any method except `GET`, `HEAD`, `TRACE`, `OPTIONS`) has to include both
+In order to mitigate this vulnerability, Spring Security by default enables CSRF, where every "not CSRF allowed"
+http method (in Spring Security 6 it is any method except `GET`, `HEAD`, `TRACE`, `OPTIONS` <sup class="foot-note">1</sup>) 
+has to include both
 - `CSRF-TOKEN` cookie
 - `X-CSRF-TOKEN` header
 
@@ -262,3 +264,12 @@ and of course don't forget to add it to providers in your module:
    ],
 ...
 ```
+
+---
+
+<p id="foot-note-1"></p>
+
+1. The allowed http methods are defined in a private inner class `CsrfFilter.DefaultRequiresCsrfMatcher`, 
+attribute `allowedMethods`:
+`private final HashSet<String> allowedMethods = new HashSet<>(Arrays.asList("GET", "HEAD", "TRACE", "OPTIONS"));`
+

@@ -1,4 +1,5 @@
 export default [
+"2024-02-18_spring_security_cors_and_csrf_configuration_with_stateless_jwt_application.md",
 "2024-02-17_implementing_persistence_with_spring_jdbc.md",
 "2024-02-16_windows_us_intl_keyboard_without_dead_keys.md",
 "2024-02-13_dao_layer_with_vanilla_java.md",

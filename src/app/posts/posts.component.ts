@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {NgbNavChangeEvent} from "@ng-bootstrap/ng-bootstrap/nav/nav";
 import {StringUtil} from "../util/string-util";
 import completeListOfPosts from "../../../posts"
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -20,7 +21,11 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     const postParam = this.activatedRoute.snapshot.queryParamMap.get('post');
     if (postParam) {
-      this.active = postParam
+      if (postParam.includes("#")) {
+        // hash is not part of the markdown file name we need to load (hashes are used to create links within the page)
+        this.active = postParam.substring(0, postParam.indexOf("#"));
+      }
+      this.active = postParam;
     } else {
       this.updateUrl({nextId: this.posts[0]} as NgbNavChangeEvent)
     }
@@ -76,5 +81,30 @@ export class PostsComponent implements OnInit {
   private getPostDate(postPath: string): string {
     let firstLetterIndex = postPath.indexOf("_");
     return postPath.substring(0, firstLetterIndex);
+  }
+
+  /**
+   * Our markdown posts sometimes have links within the page. These foot-note links will
+   * have class 'foot-note' and should add the `#foot-note-[textContent]` to the current URL
+   *
+   * That way an element `<span class='foot-note'>abc</span>`
+   * will navigate to an element with id `foot-note-abc`
+   *
+   * I couldn't achieve this functionality in Markdown directly, therefore it is implemented here, after
+   * markdown is loaded (on `ready`)
+   */
+  protected addEventListenersToFootNoteLinks() {
+    // @ts-ignore
+    for (const footNoteElement of document.getElementsByClassName("foot-note")) {
+      footNoteElement.addEventListener('click', () => {
+        console.log("clicked")
+        const endIndex = window.location.href.includes("#") ?
+          window.location.href.indexOf("#") :
+          window.location.href.length
+
+        const locationWithoutHash = window.location.href.substring(0,endIndex)
+        window.location.href = locationWithoutHash + '#foot-note-' + footNoteElement.textContent
+      });
+    }
   }
 }

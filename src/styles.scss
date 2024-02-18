@@ -23,3 +23,19 @@ td, th {
   border-width: 1px;
   padding: 0.6rem;
 }
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.foot-note {
+  /* Style to make it look like a link */
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.foot-note:hover {
+  /* Style for hover effect */
+  text-decoration: none;
+}

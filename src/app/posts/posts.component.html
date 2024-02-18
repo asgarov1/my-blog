@@ -10,7 +10,7 @@
     <li ngbNavItem="{{postPath}}" *ngFor="let postPath of posts;" [destroyOnHide]="true">
       <a ngbNavLink data-mdb-toggle="tooltip" [title]="this.getPostToolTip(postPath)">{{getPostLinkName(postPath)}}</a>
       <ng-template ngbNavContent>
-        <div class="mt-5" clipboard markdown [src]="getPath(postPath)"></div>
+        <div class="mt-5" clipboard markdown (ready)="addEventListenersToFootNoteLinks()" [src]="getPath(postPath)"></div>
       </ng-template>
     </li>
   </ul>
