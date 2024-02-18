@@ -1,5 +1,7 @@
 # Spring Security CORS and CSRF Configuration with Stateless JWT Application
 
+---
+
 ## CORS Background Info
 
 CORS (Cross-Origin Resource Sharing) is a security measure (enforced by browsers) that allow (or block) requesting
@@ -62,8 +64,12 @@ Now we can easily sent a request from the frontend:
 ## CSRF Background Info
 
 Cross-Site Request Forgery is a different kind of attack, where the malicious actor relies on the fact that 
-some website you are authenticated in, authenticates based on cookies. Since cookies are included by the browser
-on every request automatically, a website could include an html like the following:
+some website you are authenticated in, authenticates based on cookies. It also explores the loophole in CORS that
+due to web compatibility reasons (post forms existed before CORS, and disallowing them would break too much of existing web), 
+CORS doesn't block form submissions and only blocks "dynamic" requests (e.g. AJAX, fetch, etc).
+
+Since cookies are included by the browser
+on every request automatically, a website could include a html from like the following:
 
 ```html
 <form id="bad-form"
@@ -77,7 +83,7 @@ on every request automatically, a website could include an html like the followi
 </script>
 ```
 
-This html would be invisble to you but will automatically send a POST request as soon as anyone navigates to it, 
+This html would be invisible to you but will automatically send a POST request as soon as anyone navigates to it, 
 and as a result load it in their browser, and the browser will naturally include all the cookies it has
 for `http://www.banking.com`, resulting in the POST request taking place.
 
