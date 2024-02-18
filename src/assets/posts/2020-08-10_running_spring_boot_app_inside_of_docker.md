@@ -13,7 +13,7 @@ good for security.
 
 Name of your jar can be defined in maven/gradle settings but to keep your Dockerfile generic I suggest following Dockerfile:
 
-```
+```dockerfile
 FROM openjdk:11.0-jre
 ARG JAR_FILE=/target/*.jar
 COPY ${JAR_FILE} app.jar

@@ -24,7 +24,7 @@ There is also [ExecutionCondition](https://junit.org/junit5/docs/5.0.3/api/org/j
 available to evaluate whether test should run or not, [ParameterResolver](https://junit.org/junit5/docs/5.0.3/api/org/junit/jupiter/api/extension/ParameterResolver.html) 
 to resolve parameters, [and others](https://junit.org/junit5/docs/5.0.3/api/org/junit/jupiter/api/extension/Extension.html).
 
-```
+```java
 public class EmailResultExtension implements AfterEachCallback {
 
     @Override
@@ -39,7 +39,7 @@ public class EmailResultExtension implements AfterEachCallback {
 I really liked the [declartive declation](https://junit.org/junit5/docs/current/user-guide/), 
 that is possible with custom annotations
 
-```
+```java
 @Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(EmailResultExtension.class)
@@ -49,7 +49,7 @@ public @interface EmailResult {
 
 And just annotate your tests with your custom extension:
 
-```
+```java
 @EmailResult
 @Test
 public void test() {

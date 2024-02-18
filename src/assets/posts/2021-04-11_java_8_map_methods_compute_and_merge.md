@@ -6,7 +6,9 @@ Let's start with simpler ones, `computeifAbsent()` and `computeifPresent()`
 
 ### computeIfAbesent() & computeIfPresent()
 
-`public V computeIfAbsent(K key, Function<? super K, ? extends V> mapping Function)`
+```java
+public V computeIfAbsent(K key, Function<? super K, ? extends V> mapping Function)
+```
 
 In english, this function will compute for every key function that is absent, 
 the function that you pass as a second parameter. The function takes a key as a 
@@ -17,7 +19,7 @@ Lastly the result of the function is recorded and also returned to you.
 
 So for example:
 
-```
+```java
 Map<Integer, Integer> numbers = Stream.of(1, 2, 3)
                 .collect(Collectors.toMap(Function.identity(), Function.identity()));
 System.out.println(numbers); //{1=1, 2=2, 3=3}
@@ -33,7 +35,7 @@ As you can see the function only executes when the key returns null.
 Same for computeIfPresent() with the only difference that it expects a BiFunction 
 taking both key and value as parameters:
 
-```
+```java
 Map<Integer, Integer> numbers = Stream.of(1, 2, 3)
 .collect(Collectors.toMap(Function.identity(), Function.identity()));
 System.out.println(numbers); //{1=1, 2=2, 3=3}
@@ -47,12 +49,14 @@ System.out.println(numbers); //{1=1, 2=20, 3=3}
 
 ### compute()
 
-`V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction)`
+```java
+V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction)
+```
 
 Useful when you want to perform an operation on all values, like for example 
 add to +1 to a specific value.
 
-```
+```java
 Map<Integer, Integer> numbers = Stream.of(1, 2, 3)
 .collect(Collectors.toMap(Function.identity(), Function.identity()));
 System.out.println(numbers); //{1=1, 2=2, 3=3}
@@ -76,7 +80,7 @@ merge expects three parameters:
 Imagine you have 2 maps and you want to merge one into another overwriting 
 duplicates. As easy as calling one function:
 
-```
+```java
 Map<Integer, Integer> numbersOne = Stream.of(1, 2, 3)
                 .collect(Collectors.toMap(Function.identity(), Function.identity()));
 System.out.println(numbersOne); //{1=1, 2=2, 3=3}
@@ -93,7 +97,7 @@ In this case merge overwrites the previous value with a previous one.
 You could however build some logic into a mapper, like for example choosing a 
 longer string:
 
-```
+```java
 Map<Integer, String> map = Stream.of(
                 Map.entry(1, "apple"),
                 Map.entry(2, "orange"),
@@ -108,7 +112,7 @@ System.out.println(map);  // {1=apple, 2=newOrange, 3=pear}
 If the map doesn't have any value (returns null) for the specified key, 
 merge doesn't call the mapper but simply inserts the new value:
 
-```
+```java
 Map<Integer, String> map = Stream.of(
                 Map.entry(1, "apple"),
                 Map.entry(2, "orange"),
@@ -121,7 +125,7 @@ System.out.println(map);  // {1=apple, 2=orange, 3=pear, 4=newOrange}
 
 if the mapping function were to call a null the key would be removed from the map:
 
-```
+```java
 Map<Integer, String> map = Stream.of(
                 Map.entry(1, "apple"),
                 Map.entry(2, "orange"),

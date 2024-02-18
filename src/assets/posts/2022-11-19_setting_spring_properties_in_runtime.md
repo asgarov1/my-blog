@@ -12,18 +12,20 @@ With this configuration being the only one supplied, if this value (`${custom.na
 referenced from any Bean, Spring will look for some PropertySource that contains username and 
 failing to find one will throw:
 
-```
+```java
 Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'customUsername' in value "${customUsername}"
 // stacktrace ...
 ```
 
 To solve these we have 2 options.
 
+---
+
 ## Option 1: Register Custom EnvironmentPostProcessor
 
 you can implement your own PropertySource, e.g.
 
-```
+```java 
 public class CustomPropertySource extends PropertySource<String> {
     public CustomPropertySource(String name) {
         super(name); //name of the PropertySource, doesn't matter in our implementation
@@ -41,7 +43,7 @@ public class CustomPropertySource extends PropertySource<String> {
 
 and then add it to the environment in EnvironmentPostProcessor:
 
-```
+```java
 public class EnvironmentConfig implements EnvironmentPostProcessor {
 
     @Override
@@ -57,7 +59,11 @@ the last step is that you have to register the EnvironmentPostProcess, by creati
 `spring.factories` file under path of `src/main/resources/META-INF/spring.factories` 
 and inside of it just add following line:
 
-`org.springframework.boot.env.EnvironmentPostProcessor=package.to.environment.config.EnvironmentConfig`
+```
+org.springframework.boot.env.EnvironmentPostProcessor=package.to.environment.config.EnvironmentConfig
+```
+
+---
 
 ## Option 2: Register Custom EnvironmentPostProcessor
 
@@ -66,7 +72,7 @@ A class that is responsible for resolving these placeholders is a BeanPostProces
 
 So we could override it and provide our custom `PropertySource` that would resolve the property like so:
 
-```
+```java
 @Component
 public class CustomConfigurer extends PropertySourcesPlaceholderConfigurer {
 

@@ -9,7 +9,7 @@ Here is how to solve this:
 
 ## 1. Create a logging filter
 
-```
+```java
 @Slf4j
 @Component
 public class LoggingFilter extends OncePerRequestFilter {
@@ -41,7 +41,7 @@ allow us to keep reading it.
 
 ## 2. Create cacheable implementation of HttpServletRequestWrapper
 
-```
+```java
 public class CachedBodyHttpServletRequest extends HttpServletRequestWrapper {
 
     private final byte[] cachedBody;
@@ -69,7 +69,7 @@ lets you `getInputStream` by returning a `ServletInputStream` implementation of 
 `CachedBodyServletInputStream`.
 
 ## 3. Create ServletInputStream implementation
-```
+```java
 public class CachedBodyServletInputStream extends ServletInputStream {
     private final InputStream cachedBodyInputStream;
 

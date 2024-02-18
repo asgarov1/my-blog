@@ -18,7 +18,7 @@ So essentially you should take care to call you transactional methods only from 
 There is however a hack around this, you can inject a bean side of itself and call a method from that injected bean. 
 This will work:
 
-```
+```java
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -49,7 +49,7 @@ I wouldn't necessarily call this clear code though. better just to make call inv
 `@Transactional` will only roll back unchecked exceptions by default like for example `NullPointerException`. 
 If you want to throw checked exceptions you need specify them in rollback:
 
-```
+```java
 @Transactional(rollbackFor = Exception.class)
 public void save(User user) throws Exception {
     System.out.println("INSIDE METHOD: Transaction open: " + TransactionSynchronizationManager.isActualTransactionActive());
@@ -63,7 +63,7 @@ public void interruptWithException() throws Exception {
 ```
 
 ### 3. Forgetting to use @EnableTransactionManagement over your @Configuration class.
-```
+```java
 @SpringBootApplication  //includes @Configuration
 @EnableTransactionManagement
 public class TransactionDemoApplication {
@@ -77,7 +77,7 @@ public class TransactionDemoApplication {
 }
 ```
 or in xml:
-```
+```xml
 <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="myEmf" />
 </bean>
@@ -89,7 +89,7 @@ Kinda silly to even have to mention it but probably the most common issue with b
 
 Spring `@Transactional` works via Proxying. Proxying will only be done if you let Spring instantiate the beans. 
 That means as soon as you instantiate classes with `@Transactional` yourself - in my example that would have been:
-```
+```java
 UserService userService = new UserService();
 ```
 

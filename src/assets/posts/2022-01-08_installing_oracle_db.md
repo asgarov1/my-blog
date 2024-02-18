@@ -11,7 +11,7 @@ There are 2 options:
 
 Create a Dockerfile with the following content:
 
-```
+```dockerfile
 FROM store/oracle/database-enterprise:12.2.0.1-slim
 
 ENV DB_SID=MYORACLE
@@ -68,7 +68,7 @@ Move to the `<oracle_home>/dbhomeXE/demo/schema` and copy human_resources folder
 
 open `hr_mail.sql` in an editor and at the end of the file update the paths to the sqls as follows:
 
-```
+```sql
 @?/demo/schema/human_resources/hr_cre.sql
 
 -- 

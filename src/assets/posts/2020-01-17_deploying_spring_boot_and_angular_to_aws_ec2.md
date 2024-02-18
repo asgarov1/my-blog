@@ -108,7 +108,7 @@ After that update all your links to use the ip address of your EC2 instance.
 In my case I always referred to environment file so that is the only place 
 I need to update it in with `sudo nano src/environments/environment.prod.ts`:
 
-```
+```typescript
 export const environment = {
   production: true,
   apiUrl: '217.03.123.154:8080'

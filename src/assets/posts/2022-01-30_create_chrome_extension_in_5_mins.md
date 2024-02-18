@@ -20,7 +20,7 @@ have it easily retrieved from an extension. Let's make this happen:
 Just create a directory and open it in your favorite IDE :)
 
 ## 2. Create manifest.json
-```
+```json
 {
   "manifest_version": 2,
   "name": "SO plugin",
@@ -45,7 +45,7 @@ you to download and use the icon you like - good resources are [jam-icons](https
 icons as needed.
 
 ## 3. Create index.html
-```
+```html
 <!doctype html>
 <html>
 <head>
@@ -94,7 +94,7 @@ listeners so that when they are pressed we copy the predefined answer to the use
 (defined in `index.js` the import for which you see on line 8)
 
 ## 4. Create index.js
-```
+```js
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('code_writing_service').addEventListener('click', () => copyText(notACodeWritingService), false);
   document.getElementById('should_accept_answer').addEventListener('click', () => copyText(youShouldAcceptAnswer), false);

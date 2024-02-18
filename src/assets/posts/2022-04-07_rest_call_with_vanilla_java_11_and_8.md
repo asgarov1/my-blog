@@ -5,7 +5,7 @@ if your endpoint is not protected you don't need that.
 
 ## in Java 11 it is easy
 
-```
+```java
 package com.asgarov.demo;
 
 import java.io.IOException;
@@ -53,7 +53,7 @@ here
 </a> 
 - or on a trusted network you could just turn the certificate validation off, like I did in this demo:
 
-```
+```java
 package com.asgarov.demo;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -134,7 +134,7 @@ public class JavaEightConnectionUtil {
 
 you can turn off SSL by defining the following methods in code
 
-```
+```java
   private static SSLContext getSSLContext() {
         try {
             SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);
@@ -166,11 +166,11 @@ you can turn off SSL by defining the following methods in code
 
 and then call it in your HTTP Client definition:
 
-```
+```java
 private static final HttpClient httpClient = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofSeconds(10))
-            .proxy(ProxySelector.of(new InetSocketAddress(&quot;10.11.12.13&quot;, 8080))) //in case you use proxy
+            .proxy(ProxySelector.of(new InetSocketAddress("10.11.12.13", 8080))) //in case you use proxy
             .sslContext(getSSLContext())
             .build();
 ```

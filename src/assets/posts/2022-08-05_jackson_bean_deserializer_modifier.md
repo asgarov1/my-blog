@@ -2,18 +2,18 @@
 
 ---
 
-So I had a case where I wanted to add a general deserializer for Strings, but I couldn't use custom JsonDeserializer because 
+So I had a case where I wanted to add a general deserializer for Strings, but I couldn't use custom `JsonDeserializer` because 
 I also needed reliable information about the field/class being deserialized and that is just not always available with 
-JsonDeserializer due to it being recursive (most of the time it is there, but with an edge case of having empty json objects 
+`JsonDeserializer` due to it being recursive (most of the time it is there, but with an edge case of having empty json objects 
 in the middle of json it starts giving wrong type information)
 
-BeanDeserializerModifier to the rescue!
+`BeanDeserializerModifier` to the rescue!
 
 ## The code
 
 So first of all our class to deserialize into:
 
-```
+```java
 package com.asgarov.jacksondemo.domain;
 
 import com.asgarov.jacksondemo.config.NameSerializer;
@@ -37,7 +37,7 @@ public class Person {
 
 And following best practices, lets first define a test we want to fail:
 
-```
+```java
 package com.asgarov.jacksondemo.serializer;
 
 import com.asgarov.jacksondemo.domain.Person;
@@ -69,7 +69,7 @@ class NameSerializerTest {
 So as you can see I want to get "Mr/Mrs " appended from one specific deserializer, and have another one taking care 
 of cleaning out evil <script></script> tags found in our strings. Let's start with defining first deserializer.
 
-```
+```java
 package com.asgarov.jacksondemo.config;
 
 import com.fasterxml.jackson.core.JacksonException;
@@ -89,7 +89,7 @@ public class NameSerializer extends JsonDeserializer<Object> {
 
 So this one is very simple, and is used directly from the annotation. The main logic is in BeanDeserializerModifier:
 
-```
+```java
 package com.asgarov.jacksondemo.config;
 
 import com.fasterxml.jackson.databind.BeanDescription;
@@ -139,7 +139,7 @@ annotation at class or field level (in `isStringAndNotExcluded` method).
 
 That is pretty much all there is to it, we just need to configure `ObjectMapper` bean:
 
-```
+```java
 package com.asgarov.jacksondemo.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -161,7 +161,8 @@ public class SerializerConfig {
 ```
 
 and here is the marker annotation code - pretty straightforward:
-```
+
+```java
 package com.asgarov.jacksondemo.config;
 
 import java.lang.annotation.ElementType;

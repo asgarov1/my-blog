@@ -43,7 +43,7 @@ but for the sake of $250 paid for the exam learn them by heart.
   - phantom read can occur: No
 
 ## 3. What does the annotation @SpringBootApplication contain?
-```
+```java
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -163,7 +163,8 @@ Among self-populated (automatic autowiring) method parameters for controller met
 Spring has mock objects on Environment, JNDI and Servlet API to assist in unit testing
 
 `@ContextConfiguration` is commonly used in integration tests, class only annotation, here is an example:
-```
+
+```java
 @ContextConfiguration(classes=TestConfig.class)
 public class ExampleTestClass {
   // ...

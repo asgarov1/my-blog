@@ -25,7 +25,7 @@ Let's get our feet wet with an example right away, we will create [a Spring Boot
 
 Dependencies you need for the pom file:
 
-```
+```xml
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-web</artifactId>
@@ -54,7 +54,7 @@ Dependencies you need for the pom file:
 
 We will have only one domain class for this example:
 
-```
+```java
 @Entity              //used for Spring JPA
 @AllArgsConstructor  //Lombok annotation, creates all args constructor
 @NoArgsConstructor   //Lombok, create no args constructor
@@ -78,7 +78,7 @@ make sure you have Lombok plugin installed and Enable Annotation Processing in I
 
 Next we define Repository and Service classes:
 
-```
+```java
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {}
 
@@ -101,7 +101,7 @@ public class UserService {
 
 Isn't Spring awesome? Few lines and we are done! All that is left is Runner class:
 
-```
+```java
 @SpringBootApplication
 @EnableTransactionManagement
 public class TransactionDemoApplication {
@@ -167,7 +167,7 @@ You can configure exactly which Exception types mark a transaction for rollback,
 contrary specify 'no rollback rules' where you specify for which exceptions (maybe all of them) you don't want rollbacks, 
 for example:
 
-```
+```java
 @Transactional(rollbackFor = IOException.class, noRollbackFor = NullPointerException.class)
 public void save(User user) {
    // ...
@@ -191,7 +191,7 @@ Further words of caution:
 
 There is however a hack around this, you can inject a bean side of itself and call a method from that injected bean. This will work:
 
-```
+```java
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -222,7 +222,7 @@ I wouldn't necessarily call this clear code though. better just to make call inv
 Key thing to understand is the notion of transaction strategy which is defined by the 
 `org.springframework.transaction.PlatformTransactionManager` interface:
 
-```
+```java
 public interface PlatformTransactionManager {
 
     TransactionStatus getTransaction(TransactionDefinition definition) throws TransactionException;
@@ -250,7 +250,7 @@ can be a useful optimization in some cases, such as when you are using Hibernate
 The `TransactionStatus` interface provides a simple way for transactional code to control transaction execution and query transaction status. 
 The concepts should be familiar, as they are common to all transaction APIs:
 
-```
+```java
 public interface TransactionStatus extends SavepointManager {
     boolean isNewTransaction();
     boolean hasSavepoint();
@@ -268,7 +268,7 @@ dependency injection.
 ## 7 types of Propagation:
 ### 1. Propagation.REQUIRED (default)
 
-```
+```java
 @Transactional(propagation = Propagation.REQUIRED)
 public void methodA(){
     // ...
@@ -281,7 +281,7 @@ public void methodA(){
    - if the calling method does not have a transaction, methodA will create one. Either way methodA will run in a transaction.
 
 ### 2. Propagation.NESTED
-```
+```java
 @Transactional(propagation = Propagation.NESTED)
 public void methodA(){
     // ...
@@ -295,7 +295,7 @@ public void methodA(){
 
 
 ### 3. Propagation.SUPPORTS
-```
+```java
 @Transactional(propagation = Propagation.SUPPORTS)
 public void methodA(){
     // ...
@@ -311,7 +311,7 @@ Basically methodA will never create its own transaction:
 
 ### 4. Propagation.NOT_SUPPORTED
 
-```
+```java
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public void methodA(){
     // ...
@@ -332,7 +332,7 @@ In all the cases methodA doesn't support transaction and will run without one.
 
 Method will always run in a new transaction:
 
-```
+```java
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public void methodA(){
     // ...
@@ -345,7 +345,7 @@ public void methodA(){
    - if the calling method does not have a transaction, methodA will create one.
 
 ### 6. Propagation.NEVER
-```
+```java
 @Transactional(propagation = Propagation.NEVER)
 public void methodA(){
     // ...
@@ -360,7 +360,7 @@ MethodA will never create a transaction, and will throw an exception if called f
    - if the calling method does not have a transaction, methodA will not create one.
 
 ### 7. Propagation.MANDATORY
-```
+```java
 @Transactional(propagation = Propagation.MANDATORY)
 public void methodA(){
     // ...

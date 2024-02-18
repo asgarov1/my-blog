@@ -8,7 +8,7 @@ our image leaner.
 
 So for example say we want to run a java program. We could just use the following Dockerfile:
 
-```
+```dockerfile
 FROM openjdk
 RUN echo 'class HelloWorld { public static void main(String[] args) { System.out.println("Hello World"); }}' >> HelloWorld.java
 RUN javac HelloWorld.java
@@ -34,7 +34,7 @@ only need JRE
 
 ## Enter Multistage Build:
 
-```
+```dockerfile
 FROM openjdk:11 AS buildstage
 RUN echo 'class HelloWorld { public static void main(String[] args) { System.out.println("Hello World"); }}' >> HelloWorld.java
 RUN javac HelloWorld.java

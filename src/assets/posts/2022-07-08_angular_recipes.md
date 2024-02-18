@@ -4,7 +4,7 @@
 
 ### Inject a value (similar to @Value from Spring)
 
-```
+```typescript
 export const BACKEND_URL = new InjectionToken<string>('API_URL', {
   providedIn: 'root',
   factory: () => "http://localhost:8080"
@@ -21,7 +21,7 @@ export class PonyService {
 
 ### A complex directive that matches a div with class "loggable" and attribute "logText"but without attribute 'notLoggable="true"'
 
-```
+```typescript
 @Directive({
   selector: "div.loggable[logText]:not([notLoggable=true])"
 })
@@ -41,7 +41,7 @@ Will match first div but not the second one:
 
 ### Logging Directive
 
-```
+```typescript
 import {Directive} from '@angular/core';
 
 @Directive({
@@ -64,7 +64,7 @@ Usage:
 
 ### Query component and then instantiate it
 
-```
+```typescript
 const ponies = fixture.debugElement.queryAll(By.directive(PonyComponent));
 expect(ponies.length).toBe(1);
 // we can check if the pony is correctly initialized
@@ -74,7 +74,7 @@ expect(rainbowDash.name).toBe('Rainbow Dash');
 
 ### Overriding component's metadata
 
-```
+```typescript
 describe('RaceComponent', () => {
   let fixture: ComponentFixture<RaceComponent>;
   beforeEach(() => {
@@ -104,7 +104,7 @@ describe('RaceComponent', () => {
 
 ### Testing Http Calls
 
-```
+```typescript
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 describe('RaceService', () => {
@@ -149,7 +149,7 @@ describe('RaceService', () => {
 
 ### Intercept Request
 
-```
+```typescript
 @Injectable()
 export class GithubAPIInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -171,7 +171,7 @@ providers: [
 
 ### Intercept Response
 
-```
+```typescript
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
   constructor(private router: Router, private errorHandler: ErrorHandler) {}
@@ -196,15 +196,17 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
 ### Use context in the interceptor
 #### 1. Define Context Token
-`export const SHOULD_NOT_HANDLE_ERROR = new HttpContextToken<boolean>(() => false);`
+```typescript
+export const SHOULD_NOT_HANDLE_ERROR = new HttpContextToken<boolean>(() => false);
+```
 
 #### 2. Send request with context
-```
+```typescript
 const context = new HttpContext().set(SHOULD_NOT_HANDLE_ERROR, true);
 return http.get(`${baseUrl}/api/users`, { context });
 ```
 #### 3. Use in the interceptor
-```
+```typescript
 intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   // if there is a context specifically asking for not handling the error, we don't
 handle it

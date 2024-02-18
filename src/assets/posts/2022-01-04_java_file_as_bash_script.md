@@ -19,7 +19,7 @@ So I use that to create an executable Java file called HelloWorld
 (important - it should not have .java extension, other extensions are fine but standard is to 
 leave it without extension)
 
-```
+```java
 #!/d/users/my_username/DevTools/zulu11.50.19-ca-jdk11.0.12-win_x64/bin/java --source 11
 
 public class HelloWorld {

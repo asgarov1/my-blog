@@ -36,7 +36,7 @@ by annotating it with `@AutoConfigureMockMvc`.
 
 Here is an example of MockMvc.
 
-```
+```java
 @WebMvcTest(HomeController.class)
 class HomeControllerTest {
 
@@ -56,7 +56,7 @@ class HomeControllerTest {
 
 You can also easily pass parameters into MockMvc requests like so
 
-```
+```java
 mockMvc.perform(post("/")                                             
 .param("foo", "bar")
 .flashAttr("example", new Example()));
@@ -68,7 +68,7 @@ mockMvc.perform(post("/")
 In case you want to pass object as JSON into a request you can do it like in the 
 following example:
 
-```
+```java
 @Test
 @DisplayName("Posting the order works")
 public void postingOrderWorks() throws Exception {
@@ -93,7 +93,8 @@ Another great benefit that you get with `@WebMvcTest` that HtmlUnit Webclient be
 Selenium WebDriver bean are also autoconfigured if you have them in classpath.
 
 ### Example from Baeldung
-```
+
+```java
 @WebMvcTest(HomeController.class)
 class HomeControllerTest {
 
@@ -137,8 +138,8 @@ By default, it scans for @Entity classes and configures Spring Data JPA reposito
 If an embedded database is available on the classpath, it configures one as well. 
 Regular `@Component` beans are not loaded into the ApplicationContext.
 
-from Spring documentation
-```
+from Spring documentation:
+```java
 @DataJpaTest
 class CatalogServiceImplTest {
 

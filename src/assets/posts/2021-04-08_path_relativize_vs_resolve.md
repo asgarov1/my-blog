@@ -9,14 +9,13 @@ this one down.
 ## Resolve
 Basically resolve appends path parameter to the path object it was called on (joins them):
 
-```
+```java
 Path path1 = Paths.get("a");
 Path path2 = Paths.get("b");
 
 System.out.println("Path1 resolve path2: " + path1.resolve(path2));
 System.out.println("Path2 resolve path1: " + path2.resolve(path1));
 ```
-
 Produces output:
 ```
 Path1 resolve path2: a\b
@@ -27,30 +26,39 @@ Path2 resolve path1: b\a
 #### What happens if the parameter is an absolute path?
 The return value is a parameter without any change:
 
-```
+```java
 Path path1 = Paths.get("a");
 Path path2 = Paths.get("/b");
 
 System.out.println("Path1 resolve path2: " + path1.resolve(path2));
 System.out.println("Path2 resolve path1: " + path2.resolve(path1));
+```
+Produces output:
+```
 Path1 resolve path2: \b
 Path2 resolve path1: \b\a
 ```
 
 #### What if the parameter/original path is empty?
 Basically you only get the nonempty part.
-```
+
+```java
 Path path1 = Paths.get("a");
 Path path2 = Paths.get("");
 
 System.out.println("Path1 resolve path2: " + path1.resolve(path2));
 System.out.println("Path2 resolve path1: " + path2.resolve(path1));
+```
+Produces output:
+```
 Path1 resolve path2: a
 Path2 resolve path1: a
 ```
 
+---
+
 #### Documentation
-```
+```java
 /**
  * Resolve the given path against this path.
  * If the other parameter is an absolute path then this method trivially returns other. 
@@ -67,15 +75,20 @@ Path2 resolve path1: a
  */
 ```
 
+--- 
+
 ## Relativize
 This method does exactly what is sounds like - creates a relative path between two Paths.
 
-```
+```java
 Path path1 = Paths.get("a/b");
 Path path2 = Paths.get("a/b/c/d");
 
 System.out.println("Path1 relativize path2: " + path1.relativize(path2));
 System.out.println("Path2 relativize path1: " + path2.relativize(path1));
+```
+Produces output:
+```
 Path1 relativize path2: c\d
 Path2 relativize path1: ..\..
 ```
@@ -83,12 +96,15 @@ Path2 relativize path1: ..\..
 ### Empty Path
 Method works expectedly when it gets one empty path, doing what it needs to relativize them:
 
-```
+```java
 Path path1 = Paths.get("a/b");
 Path path2 = Paths.get("");
 
 System.out.println("Path1 relativize path2: " + path1.relativize(path2));
 System.out.println("Path2 relativize path1: " + path2.relativize(path1));
+```
+Produces output:
+```
 Path1 relativize path2: ..\..
 Path2 relativize path1: a\b
 ```
@@ -97,31 +113,35 @@ explained later due to mismatch of Path types.
 
 ### Method expects to get two relative Paths.
 It still works if both paths are absolute:
-```
+```java
 Path path1 = Paths.get("/a/b");
 Path path2 = Paths.get("/a/b/c/d");
 
 System.out.println("Path1 relativize path2: " + path1.relativize(path2));
 System.out.println("Path2 relativize path1: " + path2.relativize(path1));
+```
+Produces output:
+```
 Path1 relativize path2: c\d
 Path2 relativize path1: ..\..
 ```
 
 Problems start when one Path is relative and another on absolute:
 
-```
+```java
 Path path1 = Paths.get("a/b");
 Path path2 = Paths.get("/a/b/c/d");
 
 System.out.println("Path1 relativize path2: " + path1.relativize(path2));
 System.out.println("Path2 relativize path1: " + path2.relativize(path1));
 ```
+
 <img src="assets/images/relativize_exception.png">
 
 Same if the original path was absolute and the paraneter relative - as the error mmessage says "other" 's Path type must match.
 
 ### Javadoc:
-```
+```java
 /**
  * Constructs a relative path between this path and a given path.
  * Relativization is the inverse of resolution. This method attempts to construct a relative path that when resolved against this path, yields a path that locates the same file as the given path. For example, on UNIX, if this path is "/a/b" and the given path is "/a/b/c/d" then the resulting relative path would be "c/d". Where this path and the given path do not have a root component, then a relative path can be constructed. A relative path cannot be constructed if only one of the paths have a root component. Where both paths have a root component then it is implementation dependent if a relative path can be constructed. If this path and the given path are equal then an empty path is returned.
