@@ -245,7 +245,7 @@ export class CsrfTokenInterceptor implements HttpInterceptor {
   private readonly CSRF_ALLOWED_METHODS = ["GET", "HEAD", "TRACE", "OPTIONS"]
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const xsrfTokenFromCookie = CookieUtil.getCookie('XSRF-TOKEN');
+    const xsrfTokenFromCookie = this.getCookie('XSRF-TOKEN');
     // IF not a CSRF Allowed method (e.g. POST, PUT or DELETE), and XSRF-TOKEN is present
     if (!this.CSRF_ALLOWED_METHODS.includes(req.method) && xsrfTokenFromCookie) {
       // Clone the request and add X-XSRF-TOKEN header
@@ -257,6 +257,17 @@ export class CsrfTokenInterceptor implements HttpInterceptor {
     }
     // If it's a GET request, pass the original request
     return next.handle(req);
+  }
+
+  getCookie(name: string): string | undefined {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      const [cookieName, cookieValue] = cookie.trim().split('=');
+      if (cookieName === name) {
+        return decodeURIComponent(cookieValue);
+      }
+    }
+    return undefined;
   }
 }
 ```
