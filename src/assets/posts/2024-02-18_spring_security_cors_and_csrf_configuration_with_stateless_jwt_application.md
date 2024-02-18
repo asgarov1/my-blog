@@ -4,8 +4,10 @@
 
 ## CORS Background Info
 
-CORS (Cross-Origin Resource Sharing) is a security measure (enforced by browsers) that allow (or block) requesting
-resources from a different domain (different from the current domain you see in the browser URL).
+CORS (Cross-Origin Resource Sharing) is actually a relaxation of the Same Origin measure 
+that allows (or blocks) requesting resources from a different domain (different from the current domain you see in the browser URL).
+This measure is enforced by the browser, so even though you see the CORS error in response, the request actually
+has reached the server and possibly already made changes in the application/database.
 
 It is important to note, that different means different in either:
 - scheme (http or https)
@@ -63,13 +65,13 @@ Now we can easily sent a request from the frontend:
 
 ## CSRF Background Info
 
-Cross-Site Request Forgery is a different kind of attack, where the malicious actor relies on the fact that 
+Cross-Site Request Forgery is a kind of attack, where the malicious actor relies on the fact that 
 some website you are authenticated in, authenticates based on cookies. It also explores the loophole in CORS that
 due to web compatibility reasons (post forms existed before CORS, and disallowing them would break too much of existing web), 
 CORS doesn't block form submissions and only blocks "dynamic" requests (e.g. AJAX, fetch, etc).
 
 Since cookies are included by the browser
-on every request automatically, a website could include a html from like the following:
+on every request automatically, a website could include html form like the following:
 
 ```html
 <form id="bad-form"
@@ -86,6 +88,10 @@ on every request automatically, a website could include a html from like the fol
 This html would be invisible to you but will automatically send a POST request as soon as anyone navigates to it, 
 and as a result load it in their browser, and the browser will naturally include all the cookies it has
 for `http://www.banking.com`, resulting in the POST request taking place.
+
+(*In practice it is practically impossible to pass around the CorsFilter from Spring Framework that will
+block any request that is not from the allowed origin essentially nullifying the possibility of a CSRF Attack 
+but we can't/shouldn't rely on that*)
 
 ### Solution and Explanation
 
