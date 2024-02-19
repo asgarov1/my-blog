@@ -294,5 +294,7 @@ and of course don't forget to add it to providers in your module:
 
 1. The allowed http methods are defined in a private inner class `CsrfFilter.DefaultRequiresCsrfMatcher`, 
 attribute `allowedMethods`:
-`private final HashSet<String> allowedMethods = new HashSet<>(Arrays.asList("GET", "HEAD", "TRACE", "OPTIONS"));`
+```java
+private final HashSet<String> allowedMethods = new HashSet<>(Arrays.asList("GET", "HEAD", "TRACE", "OPTIONS"));
+```
 
