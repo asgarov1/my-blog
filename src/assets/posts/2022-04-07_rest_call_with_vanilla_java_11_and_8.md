@@ -26,9 +26,9 @@ public class JavaElevenHttpClient {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(url))
-                .setHeader(&quot;Authorization&quot;, &quot;Bearer &quot; + token)
+                .setHeader("Authorization", "Bearer " + token)
                 .build();
-        HttpResponse&lt;String&gt; response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }
 
@@ -36,9 +36,9 @@ public class JavaElevenHttpClient {
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .uri(URI.create(url))
-                .setHeader(&quot;Authorization&quot;, &quot;Bearer &quot; + token)
+                .setHeader("Authorization", "Bearer " + token)
                 .build();
-        HttpResponse&lt;String&gt; response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         return response.statusCode();
     }
 }
@@ -84,16 +84,16 @@ public class JavaEightConnectionUtil {
     }
 
     public static String get(String path, String gitlabToken) throws IOException {
-        HttpURLConnection con = createConnection(&quot;GET&quot;, path, gitlabToken);
+        HttpURLConnection con = createConnection("GET", path, gitlabToken);
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(con.getInputStream(), UTF_8))) {
-            String response = reader.lines().collect(joining(&quot;&quot;));
+            String response = reader.lines().collect(joining(""));
             return response;
         }
     }
 
     public static int postComment(String path, String gitlabToken) throws IOException {
-        HttpURLConnection con = createConnection(&quot;POST&quot;, path, gitlabToken);
+        HttpURLConnection con = createConnection("POST", path, gitlabToken);
         return con.getResponseCode();
     }
 
@@ -101,7 +101,7 @@ public class JavaEightConnectionUtil {
         URL url = new URL(path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod(httpMethod);
-        connection.setRequestProperty(&quot;Authorization&quot;, &quot;Bearer &quot; + token);
+        connection.setRequestProperty("Authorization", "Bearer " + token);
         return connection;
     }
 
@@ -109,7 +109,7 @@ public class JavaEightConnectionUtil {
      * Turns SSL Certificate validation off - same thing that curl scripts are doing with `curl --insecure ...`
      */
     private static void turnCertificateValidationOff() throws NoSuchAlgorithmException, KeyManagementException {
-        SSLContext sc = SSLContext.getInstance(&quot;SSL&quot;);
+        SSLContext sc = SSLContext.getInstance("SSL");
         sc.init(null, new TrustManager[]{createTrustManager()}, new SecureRandom());
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
     }
@@ -137,7 +137,7 @@ you can turn off SSL by defining the following methods in code
 ```java
   private static SSLContext getSSLContext() {
         try {
-            SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);
+            SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, trustAllCerts(), new SecureRandom());
             return sslContext;
         } catch (NoSuchAlgorithmException | KeyManagementException e) {
