@@ -5,11 +5,11 @@
 ## Background
 
 Every now and again I encounter the situation where my java app correctly sends a request locally but fails on the server, 
-and you can't always understand from the error what the issue is.
+and it isn't always possible to understand from logs what the issue is.
 
-In this kind of situations I like to quickly check whether the problem is in SSL Certificates that Java doesn't recognize,
+In this kind of situation I like to quickly check whether the problem is in SSL Certificates that Java doesn't recognize,
 or something similar and for that I like to quickly call the endpoint in small Java program. (It has to be Java
-because it could work in curl but like said before a Certificate issue will only create a problem in Java).
+because it could work in curl but like said before a certificate issue can only be replicated in Java).
 
 Since Java 11 we can use a single Java file as a "script" of sorts, provided we do NOT specify a package name. 
 In this case we don't need a `javac` step, and can simply execute the file with `java` (e.g. `java MyClass.java`).
