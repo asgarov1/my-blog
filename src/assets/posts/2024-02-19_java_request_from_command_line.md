@@ -14,7 +14,9 @@ because it could work in curl but like said before a certificate issue can only 
 Since Java 11 we can use a single Java file as a "script" of sorts, provided we do NOT specify a package name. 
 In this case we don't need a `javac` step, and can simply execute the file with `java` (e.g. `java MyClass.java`).
 
-So I create the following file and simply adjust the URL:
+## Solution
+
+I create the following file and simply adjust the URL:
 
 ```java
 import java.io.IOException;
